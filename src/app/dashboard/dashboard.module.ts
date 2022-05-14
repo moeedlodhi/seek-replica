@@ -12,6 +12,7 @@ import { MatListModule } from "@angular/material/list";
 import { DisableDivDirective, DisableDivDirective2, DisableDivDirective3 } from './directives/disable-div.directive';
 import { HeaderComponent } from "../header/header.component";
 import {MatMenuModule} from '@angular/material/menu';
+import { JoblistComponent } from './jobsearch/joblist/joblist.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {MatMenuModule} from '@angular/material/menu';
         DisableDivDirective,
         DisableDivDirective2,
         DisableDivDirective3,
-        HeaderComponent
+        HeaderComponent,
+        JoblistComponent
     ],
     imports:[
         CommonModule,

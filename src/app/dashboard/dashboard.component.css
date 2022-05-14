@@ -37,7 +37,21 @@ color:white;
     #mainBar {
       display: None;
     }
+    
+    #divBar{
+      display: none;
+    }
+    #hideBar{
+      background-color:#0d3880
+    }#rowpadding1{
+      background-color:#0d3880
+
+    }
+    #hideBar1{
+      background-color:#0d3880
   }
+  
+}
 a:hover {
     text-decoration: underline;
 } 

@@ -1,15 +1,24 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {MatListModule} from '@angular/material/list';
+import { Router } from '@angular/router';
+import { mainService } from 'src/app/services/subject.service';
 
 
-
+export class parameters{
+  keywordJob:string;
+  keywordType:string;
+  keywordRegion:string
+}
 
 @Component({
   selector: 'app-jobsearch',
   templateUrl: './jobsearch.component.html',
   styleUrls: ['./jobsearch.component.css']
 })
+
+
+
 export class JobsearchComponent implements OnInit {
   hideBars:String;
   rotation:Boolean;
@@ -25,6 +34,8 @@ export class JobsearchComponent implements OnInit {
   showJobList1:Boolean=false;
   showJobList2:Boolean=false;
   showJobList3:Boolean=false;
+  classificationArray:Array<string>=[]
+  params:any;
 
   @ViewChild('keywordJob') keywordJob:ElementRef
   @ViewChild('keywordType') keywordType:ElementRef
@@ -33,7 +44,10 @@ export class JobsearchComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private router:Router,private mainService:mainService) {
+
+  
+   }
  
 
   ngOnInit(): void {
@@ -236,26 +250,43 @@ export class JobsearchComponent implements OnInit {
     this.clickedDiv=item
 
   }
+  enterJobsearch(event){
+    this.router.navigateByUrl(`dashboard/jobsearch/joblist`);
+    
+    this.params=new parameters()
+    
+    this.params.keywordType=this.classificationArray
+    this.params.keywordJob=this.keywordJob.nativeElement.value
+    this.params.keywordRegion=this.keywordRegion.nativeElement.value
+
+    this.mainService.sendMessage(this.params)
+
+
+
+
+  }
   jobSearch(event){
 
-    console.log(event.target.name)
+
     if (event.target.name==='keywordJob'){
       if(this.keywordJob.nativeElement.value.length>0){
         this.keywordLength=true
+        
       }
       else{
         this.keywordLength=false
       }
+    }  
 
-    }else if(event.target.name==='keywordType'){
-      if(this.keywordType.nativeElement.value.length>0){
-        this.keywordTypeLength=true
-      }
-      else{
-        this.keywordTypeLength=false
-      }
+    // }else if(event.target.name==='keywordType'){
+    //   if(this.keywordType.nativeElement.value.length>0){
+    //     this.keywordTypeLength=true
+    //   }
+    //   else{
+    //     this.keywordTypeLength=false
+    //   }
 
-    }else if(event.target.name==='keywordRegion'){
+    if(event.target.name==='keywordRegion'){
       if(this.keywordRegion.nativeElement.value.length>0){
         this.keywordRegionLength=true
       }
@@ -264,6 +295,25 @@ export class JobsearchComponent implements OnInit {
       }
 
     }
+  }
+  pushToArray(item){
+
+    if (this.classificationArray.includes(item)){
+      const index=this.classificationArray.indexOf(item)
+      this.classificationArray.splice(index,1)
+    }else{
+      this.classificationArray.push(item)
+    }
+    console.log(this.classificationArray,'array')
+
+    if(this.classificationArray.length>0){
+
+      this.keywordType.nativeElement.value=`${this.classificationArray.length} types selected`
+
+    }else{
+      this.keywordType.nativeElement.value=''
+    }
+
   }
 
   removeText(name){
@@ -282,7 +332,7 @@ export class JobsearchComponent implements OnInit {
 
   }
   keyJob(item){
-    console.log('key')
+
 
     if(item==='sayHello1'){
       this.showJobList1=true;

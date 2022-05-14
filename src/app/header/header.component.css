@@ -2,7 +2,15 @@
     width:100%;
     height:30px;
     background-color: #eee;
+    display:flex
 }
+@media only screen and (max-width: 768px) {
+    .headerbar {
+      display: None;
+    }
+    
+    
+  }
 
 .headertag{
  

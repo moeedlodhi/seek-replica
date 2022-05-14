@@ -16,6 +16,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceModule } from './services/authmodule.service';
 import {MatDialogModule} from '@angular/material/dialog';
+import { mainService } from './services/subject.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     HttpClientModule,
     MatDialogModule
   ],
-  providers: [AuthServiceModule],
+  providers: [AuthServiceModule,mainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
