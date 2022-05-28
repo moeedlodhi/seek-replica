@@ -1,4 +1,5 @@
 from auth_module.schema import AuthMutations,UserQueries
+from jobsearchbars.schema import JobSearchBarQueries
 import graphene
 class Mutations(
     AuthMutations
@@ -6,7 +7,8 @@ class Mutations(
 ):pass
 
 class Query(
-    UserQueries
+    UserQueries,
+    JobSearchBarQueries
 
 ):pass
 

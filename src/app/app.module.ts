@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthServiceModule } from './services/authmodule.service';
 import {MatDialogModule} from '@angular/material/dialog';
 import { mainService } from './services/subject.service';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { mainService } from './services/subject.service';
     RegisterModule,
     GraphQLModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    EffectsModule
   ],
   providers: [AuthServiceModule,mainService],
   bootstrap: [AppComponent]

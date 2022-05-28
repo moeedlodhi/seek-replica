@@ -1,9 +1,11 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {MatListModule} from '@angular/material/list';
 import { Router } from '@angular/router';
+import { JobSearchService } from 'src/app/services/jobsearch.service';
 import { mainService } from 'src/app/services/subject.service';
-
+import { map, catchError } from 'rxjs/operators';
+import { listObj } from './joblist.models';
 
 export class parameters{
   keywordJob:string;
@@ -34,23 +36,37 @@ export class JobsearchComponent implements OnInit {
   showJobList1:Boolean=false;
   showJobList2:Boolean=false;
   showJobList3:Boolean=false;
+  response:any
   classificationArray:Array<string>=[]
   params:any;
+  jobSearchKeywordsList:Array<listObj> = []
+  jobKeyRegions:Array<listObj> = []
 
   @ViewChild('keywordJob') keywordJob:ElementRef
   @ViewChild('keywordType') keywordType:ElementRef
   @ViewChild('keywordRegion') keywordRegion:ElementRef
 
+  
 
 
+  constructor(private router:Router,
+    private mainService:mainService,
+    private jobsearchservice:JobSearchService,
+    private renderer: Renderer2) {
 
-  constructor(private router:Router,private mainService:mainService) {
-
+     
   
    }
  
 
   ngOnInit(): void {
+
+    const search1 = this.jobsearchservice.jobsearchterms("dj").pipe(
+      map((res:any)=>{
+        console.log(res)
+      })
+    )
+    console.log(search1)
   
 
   }
@@ -251,32 +267,86 @@ export class JobsearchComponent implements OnInit {
 
   }
   enterJobsearch(event){
-    this.router.navigateByUrl(`dashboard/jobsearch/joblist`);
+    this.router.navigate(['dashboard','jobsearch','joblist'],{queryParams:{
+      'keywordType':this.classificationArray,
+      'keywordJob':this.keywordJob.nativeElement.value,
+      'keywordRegion':this.keywordRegion.nativeElement.value
+    }})
+
     
-    this.params=new parameters()
     
-    this.params.keywordType=this.classificationArray
-    this.params.keywordJob=this.keywordJob.nativeElement.value
-    this.params.keywordRegion=this.keywordRegion.nativeElement.value
-
-    this.mainService.sendMessage(this.params)
-
-
 
 
   }
+  JobeventHandler(event){
+
+      if(event.keyCode===8 && event.srcElement.name !=="keywordRegion"){
+        this.jobsearchservice.jobsearchterms(this.keywordJob.nativeElement.value).subscribe((res:any)=>{
+          console.log('res?',res)
+          this.jobSearchKeywordsList = res
+        })
+
+      }
+      else if(event.keyCode===8){
+        this.jobsearchservice.jobKeyWordRegions(this.keywordRegion.nativeElement.value).subscribe((res:any)=>{
+          this.jobKeyRegions = res
+        })
+      }
+        
+
+    
+    console.log(event,'yooo')
+  }
+
   jobSearch(event){
 
 
     if (event.target.name==='keywordJob'){
+   
       if(this.keywordJob.nativeElement.value.length>0){
         this.keywordLength=true
+        this.jobSearchKeywordsList=this.jobSearchKeywordsList.filter((v,vindex)=>{
+      
+          return v.name.includes(this.keywordJob.nativeElement.value)
+
+        })
+
+      
+        
         
       }
       else{
+        this.jobsearchservice.allJobSearchTerms().subscribe(
+          res=>{
+            this.jobSearchKeywordsList = res
+          }
+        )
         this.keywordLength=false
       }
-    }  
+    }
+    else if (event.target.name==='keywordRegion'){
+   
+      if(this.keywordRegion.nativeElement.value.length>0){
+        this.keywordRegionLength=true
+        this.jobKeyRegions=this.jobKeyRegions.filter((v,vindex)=>{
+      
+          return v.name.includes(this.keywordRegion.nativeElement.value)
+
+        })
+
+      
+        
+        
+      }
+      else{
+        this.jobsearchservice.allJobKeywordRegions().subscribe(
+          res=>{
+            this.jobSearchKeywordsList = res
+          }
+        )
+        this.keywordLength=false
+      }
+    }   
 
     // }else if(event.target.name==='keywordType'){
     //   if(this.keywordType.nativeElement.value.length>0){
@@ -336,17 +406,38 @@ export class JobsearchComponent implements OnInit {
 
     if(item==='sayHello1'){
       this.showJobList1=true;
+      this.jobsearchservice.allJobSearchTerms().subscribe(
+        res=>{
+          this.jobSearchKeywordsList = res
+        }
+      )
+      
 
     }
     else if(item==='sayHello2'){
       this.showJobList2=true
     }
     else if(item==='sayHello3'){
+      this.jobsearchservice.allJobKeywordRegions().subscribe(
+        (res:any)=>{
+          this.jobKeyRegions = res
+          console.log(this.jobKeyRegions,res,'hahahahaj')
+        }
+      )
+
+      
       this.showJobList3=true
     }
   }
 
-  
-  
+  assignKeyword(item,event){
+    console.log(event.target,'yooo')
+    this.keywordJob.nativeElement.value = item.name
+  }
+
+  assignLocation(item,event){
+    console.log(event.target,'yooo')
+    this.keywordRegion.nativeElement.value = item.name
+  }
 
 }

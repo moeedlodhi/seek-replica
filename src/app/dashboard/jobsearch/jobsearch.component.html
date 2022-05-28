@@ -2,14 +2,10 @@
 <ng-template #sayHello1>
     <div  id="popa2" style="width:100%;position:absolute;z-index:10" [hidden]="!showJobList1" class="scroll">
 
-        <ul  class="list-group">
-            <li name="simon2" class="list-group-item active">Cras justo odio</li>
-            <li name="simon3" class="list-group-item">Dapibus ac facilisis in</li>
-            <li name="simon4" class="list-group-item">Cras justo odio</li>
-            <li name="simon5" class="list-group-item">Dapibus ac facilisis in</li>   
-            <li name="simon7" class="list-group-item">Cras justo odio</li>
-            <li name="simon8" class="list-group-item">Dapibus ac facilisis in</li>
-                          
+        <ul appDisableDiv  class="list-group">
+
+            <li  (click)="assignKeyword(item,$event)" appHighlight *ngFor="let item of jobSearchKeywordsList;index as i" name="simon2" [attr.id]="'option1'+i" class="list-group-item">{{item.name}}</li>
+           
         </ul>
 
     </div>
@@ -32,13 +28,8 @@
 <ng-template #sayHello3>
     <div id="popa4" style="width:100%;position:absolute;z-index:10" [hidden]="!showJobList3" class="scroll">
 
-        <ul class="list-group">
-            <li class="list-group-item active">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>   
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>              
+        <ul appDisableDiv3  class="list-group">
+            <li  (click)="assignLocation(item,$event)" appHighlight *ngFor="let item of jobKeyRegions;index as i" name="simon2" [attr.id]="'option2'+i" class="list-group-item">{{item.name}}</li>            
         </ul>
 
     </div>
@@ -66,7 +57,7 @@
                     <div class="col-md-3 shortenpadding">
                         <strong style="color:white">What</strong>
                         <div class="flexContainer form-control" style="width:100%;height:44px;background-color: white;">
-                        <input id="popa" appDisableDiv (click)="keyJob('sayHello1')" name="keywordJob" #keywordJob (input)="jobSearch($event)"   placeholder="Enter Keywords" class="inputField" type="text" style="width:90%;border:0px">
+                        <input autocomplete="off" id="popa" (click)="keyJob('sayHello1')" name="keywordJob" #keywordJob (input)="jobSearch($event)" (keyup)="JobeventHandler($event)"   placeholder="Enter Keywords" class="inputField" type="text" style="width:90%;border:0px">
                         <div id="jobForm" [hidden]="!keywordLength" style="width:10%;height:100%">
                             <i (click)="removeText('keywordJob')"  class="cross fa fa-times" aria-hidden="true"></i>
                         </div>
@@ -79,7 +70,7 @@
                     <div class="col-md-3 shortenpadding">
                         <strong style="color:white">Type</strong>
                         <div class="flexContainer form-control" style="width:100%;height:44px;background-color: white;">
-                            <input  appDisableDiv2 (click)="keyJob('sayHello2')" (input)="jobSearch($event)" name="keywordType" #keywordType placeholder="Any Classification" class="inputField" type="text" style="width:90%;border:0px">
+                            <input autocomplete="off"  appDisableDiv2 (click)="keyJob('sayHello2')" (input)="jobSearch($event)" name="keywordType" #keywordType placeholder="Any Classification" class="inputField" type="text" style="width:90%;border:0px">
                             <div [hidden]="!keywordTypeLength" style="width:10%;height:100%">
                                 <i (click)="removeText('keywordType')"   class="cross fa fa-times" aria-hidden="true"></i>
                             </div>
@@ -92,7 +83,7 @@
                     <div class="col-md-3 shortenpadding">
                         <strong style="color:white">Where</strong>
                             <div class="flexContainer form-control" style="width:100%;height:44px;background-color: white;">
-                                <input appDisableDiv3  (click)="keyJob('sayHello3')" (input)="jobSearch($event)" name="keywordRegion" #keywordRegion  placeholder="Suburb,city or region" class="inputField" type="text" style="width:90%;border:0px">
+                                <input autocomplete="off"  (click)="keyJob('sayHello3')" (input)="jobSearch($event)" (keyup)="JobeventHandler($event)" name="keywordRegion" #keywordRegion  placeholder="Suburb,city or region" class="inputField" type="text" style="width:90%;border:0px">
                                 <div [hidden]="!keywordRegionLength" style="width:10%;height:100%">
                                     <i (click)="removeText('keywordRegion')"   class="cross fa fa-times" aria-hidden="true"></i>
                                 </div>

@@ -9,11 +9,21 @@ import { mainService } from 'src/app/services/subject.service';
 })
 export class JoblistComponent implements OnInit,OnDestroy {
 
-  constructor(private route:ActivatedRoute,private mainService:mainService) { }
+  constructor(private route:ActivatedRoute,private mainService:mainService) { 
+   
+  }
 
   ngOnInit(): void {
     console.log(this.route.snapshot.queryParams)
     this.firstSubscription()
+
+
+    this.route.queryParams.subscribe(
+      res=>{
+        console.log('params here',res)
+      }
+    )
+    
   }
   ngOnDestroy(): void {
     this.firstSubscription().unsubscribe()

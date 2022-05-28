@@ -9,15 +9,17 @@ export class DisableDivDirective {
 
   @HostListener('document:mousedown',['$event']) onGlobalClick(event){
 
-    if(this.el.nativeElement.name !== event.target.name){
+    console.log(event.target.parentElement,'check event',this.el.nativeElement)
+    if(event.target.parentElement !=this.el.nativeElement && event.target.name !="keywordJob"){
       let doc1=document.getElementById('popa2')
-      doc1.style.display='none'
-    }else{
+        doc1.style.display='none'
 
+    }else{
       let doc1=document.getElementById('popa2')
       doc1.style.display='block'
 
     }
+    
   }
 
 }
@@ -65,11 +67,12 @@ export class DisableDivDirective3 {
 
   @HostListener('document:mousedown',['$event']) onGlobalClick(event){
 
-    if(this.el.nativeElement.name !== event.target.name){
+    console.log(event.target.parentElement,'check event',this.el.nativeElement)
+    if(event.target.parentElement !=this.el.nativeElement && event.target.name !="keywordRegion"){
       let doc1=document.getElementById('popa4')
-      doc1.style.display='none'
-    }else{
+        doc1.style.display='none'
 
+    }else{
       let doc1=document.getElementById('popa4')
       doc1.style.display='block'
 

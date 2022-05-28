@@ -40,6 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django'
 ]
+LOCAL_APPS = [
+    'jobsearchbars','jobs'
+]
+
+INSTALLED_APPS +=LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
