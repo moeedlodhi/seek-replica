@@ -1,6 +1,7 @@
 # SeekClone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.3.
+It's a watered down version of seek.com created on Angular and Django. Still in the works though.
 
 ## Development server
 
