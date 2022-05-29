@@ -1,10 +1,16 @@
-<div class="container" style="padding:40px">
-<div style="padding:20px" *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]">
+<div *ngIf="loader" class="spinner" style="margin-top:10%">
+  <div class="bounce1"></div>
+  <div class="bounce2"></div>
+  <div class="bounce3"></div>
+</div>
+
+<div *ngIf="!loader" class="container" style="padding:40px">
+<div style="padding:20px" *ngFor="let job of jobs">
 <div class="card">
-    <a class="card-header mainCard mainStyle">Featured</a>
+    <a class="card-header mainCard mainStyle">{{job.title}}</a>
     <div class="card-body">
       <h3 class="card-title">Special title treatment</h3>
-      <ul>
+    <ul>
         <li>first item</li>
         <li>second item</li>
         <li>third item</li>

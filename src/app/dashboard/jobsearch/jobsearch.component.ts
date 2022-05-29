@@ -38,6 +38,7 @@ export class JobsearchComponent implements OnInit {
   showJobList3:Boolean=false;
   response:any
   classificationArray:Array<string>=[]
+  jobClassArray:Array<listObj> = []
   params:any;
   jobSearchKeywordsList:Array<listObj> = []
   jobKeyRegions:Array<listObj> = []
@@ -348,13 +349,7 @@ export class JobsearchComponent implements OnInit {
       }
     }   
 
-    // }else if(event.target.name==='keywordType'){
-    //   if(this.keywordType.nativeElement.value.length>0){
-    //     this.keywordTypeLength=true
-    //   }
-    //   else{
-    //     this.keywordTypeLength=false
-    //   }
+    
 
     if(event.target.name==='keywordRegion'){
       if(this.keywordRegion.nativeElement.value.length>0){
@@ -365,14 +360,22 @@ export class JobsearchComponent implements OnInit {
       }
 
     }
+    else if(event.target.name==='keywordType'){
+        if(this.keywordType.nativeElement.value.length>0){
+          this.keywordTypeLength=true
+        }
+        else{
+          this.keywordTypeLength=false
+        }
   }
+}
   pushToArray(item){
 
-    if (this.classificationArray.includes(item)){
-      const index=this.classificationArray.indexOf(item)
+    if (this.classificationArray.includes(item.name)){
+      const index=this.classificationArray.indexOf(item.name)
       this.classificationArray.splice(index,1)
     }else{
-      this.classificationArray.push(item)
+      this.classificationArray.push(item.name)
     }
     console.log(this.classificationArray,'array')
 
@@ -394,6 +397,8 @@ export class JobsearchComponent implements OnInit {
     else if(name==='keywordType'){
       this.keywordType.nativeElement.value=''
       this.keywordTypeLength=false
+      this.jobClassArray=[]
+      this.classificationArray = []
     }
     else if(name==='keywordRegion'){
       this.keywordRegion.nativeElement.value=''
@@ -416,6 +421,14 @@ export class JobsearchComponent implements OnInit {
     }
     else if(item==='sayHello2'){
       this.showJobList2=true
+      this.keywordTypeLength=true
+      this.jobsearchservice.allJobClassifications().subscribe(
+        res=>{
+
+          this.jobClassArray = res
+
+        }
+      )
     }
     else if(item==='sayHello3'){
       this.jobsearchservice.allJobKeywordRegions().subscribe(

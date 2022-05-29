@@ -4,4 +4,9 @@ export interface listObj {
     
 }
 
+export interface jobObj{
+    id:string,
+    title:string
+}
+
 

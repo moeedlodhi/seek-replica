@@ -62,4 +62,30 @@ export class JobSearchService{
         }).pipe(map((res:any)=>res.data.allJobKeylocations))
     }
 
+    allJobClassifications(){
+        return this.apollo.query({
+            query:gql`query{
+                allJobClassifications {
+                  id
+                  name
+                }
+              }`
+        }).pipe(map((res:any)=>res.data.allJobClassifications))
+    }
+    jobsfilter(jobkeyword:string='',jobregion:string='',classification:string=''){
+      return this.apollo.query({
+        query:gql`query jobsfiltering($jobkeyword:String!,$jobregion:String!,$classification:[String!]){
+          jobs(jobkeyword:$jobkeyword,jobregion:$jobregion,classification:$classification){
+            id
+            title
+          }
+        }`,
+        variables:{
+          jobkeyword:jobkeyword,
+          jobregion:jobregion,
+          classification:classification
+        }
+      }).pipe(map((res:any)=>res.data.jobs))
+    }
+
 }  

@@ -9,15 +9,15 @@
         </ul>
 
     </div>
-    
+   
 </ng-template>
 
 <ng-template #sayHello2>
     <div id="popa3" style="width:100%;position:absolute;z-index:10" [hidden]="!showJobList2" class="scroll">
 
-        <mat-selection-list *ngFor="let item of [1,2,3,4]"  name="list1" style="background-color: white;" #shoes>
+        <mat-selection-list *ngFor="let item of jobClassArray"  name="list1" style="background-color: white;" #shoes>
             <mat-list-option name="list-option" (click)="pushToArray(item)">
-                {{item}}
+                {{item.name}}
             </mat-list-option>
             
         </mat-selection-list>
@@ -70,9 +70,9 @@
                     <div class="col-md-3 shortenpadding">
                         <strong style="color:white">Type</strong>
                         <div class="flexContainer form-control" style="width:100%;height:44px;background-color: white;">
-                            <input autocomplete="off"  appDisableDiv2 (click)="keyJob('sayHello2')" (input)="jobSearch($event)" name="keywordType" #keywordType placeholder="Any Classification" class="inputField" type="text" style="width:90%;border:0px">
-                            <div [hidden]="!keywordTypeLength" style="width:10%;height:100%">
-                                <i (click)="removeText('keywordType')"   class="cross fa fa-times" aria-hidden="true"></i>
+                            <input autocomplete="off"  appDisableDiv2 (click)="keyJob('sayHello2')" (input)="jobSearch($event)" name="keywordType" #keywordType placeholder="Any Classification"  type="text" style="width:90%;border:0px;">
+                            <div (click)="removeText('keywordType')"  [hidden]="!keywordTypeLength" style="width:10%;height:100%" class="inputFieldSecond">
+                            
                             </div>
                             
                         </div>

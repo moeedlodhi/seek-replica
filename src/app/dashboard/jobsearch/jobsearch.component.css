@@ -129,4 +129,12 @@
      position:relative
 
 }
+.inputFieldSecond{
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf8pHlkvCtr4cucC_vIsZl0N4XSq1B71Rdnrl0ggslqhfUSaojR94eiz7ToMZZARgNRPU&usqp=CAU') no-repeat scroll 7px 7px;
+    background-size:15px;
+    background-position:right;
+    cursor:pointer;
+    
+
+}
   

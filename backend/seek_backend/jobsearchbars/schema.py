@@ -25,6 +25,7 @@ class JobSearchBarQueries(graphene.ObjectType):
     all_job_keywords = graphene.List(JobKeyWordsType)
     job_keylocations = graphene.List(JobKeyRegions,search_term=graphene.String(required=True))
     all_job_keylocations = graphene.List(JobKeyRegions)
+    all_job_classifications = graphene.List(JobClassificationType)
 
 
     def resolve_job_keywords(self,info,search_term):
@@ -41,5 +42,11 @@ class JobSearchBarQueries(graphene.ObjectType):
 
     def resolve_all_job_keylocations(self,info):
         iterable = joblocations.objects.all()
-        return iterable          
+        return iterable
+
+    def resolve_all_job_classifications(self, info):
+        iterable = jobclassifications.objects.all()
+        return iterable    
+
+
 
