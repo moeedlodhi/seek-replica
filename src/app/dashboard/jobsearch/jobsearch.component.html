@@ -70,7 +70,7 @@
                     <div class="col-md-3 shortenpadding">
                         <strong style="color:white">Type</strong>
                         <div class="flexContainer form-control" style="width:100%;height:44px;background-color: white;">
-                            <input autocomplete="off"  appDisableDiv2 (click)="keyJob('sayHello2')" (input)="jobSearch($event)" name="keywordType" #keywordType placeholder="Any Classification"  type="text" style="width:90%;border:0px;">
+                            <input readonly="True" autocomplete="off"  appDisableDiv2 (click)="keyJob('sayHello2')" (input)="jobSearch($event)" name="keywordType" #keywordType placeholder="Any Classification"  type="text" style="width:90%;border:0px;">
                             <div (click)="removeText('keywordType')"  [hidden]="!keywordTypeLength" style="width:10%;height:100%" class="inputFieldSecond">
                             
                             </div>

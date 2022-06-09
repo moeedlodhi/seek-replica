@@ -1,23 +1,53 @@
-<div *ngIf="loader" class="spinner" style="margin-top:10%">
+<div *ngIf="loader" class="spinner" >
   <div class="bounce1"></div>
   <div class="bounce2"></div>
   <div class="bounce3"></div>
 </div>
 
-<div *ngIf="!loader" class="container" style="padding:40px">
-<div style="padding:20px" *ngFor="let job of jobs">
-<div class="card">
-    <a class="card-header mainCard mainStyle">{{job.title}}</a>
-    <div class="card-body">
-      <h3 class="card-title">Special title treatment</h3>
-    <ul>
-        <li>first item</li>
-        <li>second item</li>
-        <li>third item</li>
-    </ul>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-   
-    </div>
+<div class="row">
+  <div class="col-md-10">
+
+    <div  class="container" style="padding:40px">
+      <div style="width:100%;height:20px;display:flex;justify-content: space-between;">
+        <p><strong>{{count}}</strong> jobs found</p>
+        <div appHideside  style="display:flex">
+          <p>Sort by relevance</p><img id="mainRelevance" #imageSpin (click)="toggleImage()" class="spinimage1" src="/assets/whitearrow.png" style="height:20px;margin-left:10px;cursor: pointer;"></div>
+            
+      </div>
+
+
+
+      <div  style="width:100%;height:20px;display:flex;justify-content: flex-end;">
+        <div id="sideWindow" class="relevancePopup hide">
+
+          <p style="font-size:18px" >Relevance</p>
+          <p style="font-size:18px" (click)="sortByDate()">Date</p>
+        
+        </div> 
+      </div>
+
+
+
+      <div style="padding:20px" *ngFor="let job of jobs">
+      <div class="card">
+          <a class="card-header mainCard mainStyle">{{job.title}}</a>
+          <div class="card-body">
+            <h3 class="card-title">Special title treatment</h3>
+          <ul>
+              <li>first item</li>
+              <li>second item</li>
+              <li>third item</li>
+          </ul>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+         
+          </div>
+      </div>
+      </div>
+      </div>
+      
+
+  </div>
+  <div class="col-md-2"></div>
 </div>
-</div>
-</div>
+
+

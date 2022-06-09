@@ -14,7 +14,10 @@ import { HeaderComponent } from "../header/header.component";
 import {MatMenuModule} from '@angular/material/menu';
 import { JoblistComponent } from './jobsearch/joblist/joblist.component';
 import { HighlightDirective } from './directives/highlight.directive';
-
+import { HidesideDirective,DropdownDirective } from './directives/hideside.directive';
+import { GettingstartedComponent } from './profile/gettingstarted/gettingstarted.component';
+import { ReactiveFormsModule } from "@angular/forms";
+import { MinimenuDirective } from './directives/minimenu.directive';
 
 @NgModule({
     declarations:[
@@ -28,7 +31,11 @@ import { HighlightDirective } from './directives/highlight.directive';
         DisableDivDirective3,
         HeaderComponent,
         JoblistComponent,
-        HighlightDirective
+        HighlightDirective,
+        HidesideDirective,
+        DropdownDirective,
+        GettingstartedComponent,
+        MinimenuDirective
     ],
     imports:[
         CommonModule,
@@ -36,7 +43,8 @@ import { HighlightDirective } from './directives/highlight.directive';
         FormsModule,
         BrowserModule,
         MatMenuModule,
-        MatListModule
+        MatListModule,
+        ReactiveFormsModule
     ]
     ,exports:[
 

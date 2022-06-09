@@ -72,18 +72,22 @@ export class JobSearchService{
               }`
         }).pipe(map((res:any)=>res.data.allJobClassifications))
     }
-    jobsfilter(jobkeyword:string='',jobregion:string='',classification:string=''){
+    jobsfilter(jobkeyword:string='',jobregion:string='',classification:Array<string>=[],sortDate:boolean=false){
       return this.apollo.query({
-        query:gql`query jobsfiltering($jobkeyword:String!,$jobregion:String!,$classification:[String!]){
-          jobs(jobkeyword:$jobkeyword,jobregion:$jobregion,classification:$classification){
-            id
-            title
-          }
-        }`,
+        query:gql`query jobsfiltering($jobkeyword:String!,$jobregion:String!,$classification:[String!],$sortDate:Boolean!){
+          jobs(jobkeyword:$jobkeyword,jobregion:$jobregion,classification:$classification,sortDate:$sortDate){
+            count
+            jobs{
+                id
+                title
+    }
+  }
+}`,
         variables:{
           jobkeyword:jobkeyword,
           jobregion:jobregion,
-          classification:classification
+          classification:classification,
+          sortDate:sortDate
         }
       }).pipe(map((res:any)=>res.data.jobs))
     }

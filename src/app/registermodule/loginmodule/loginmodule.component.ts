@@ -6,6 +6,13 @@ import { MatDialog,MatDialogConfig,MatDialogRef} from '@angular/material/dialog'
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogueComponentComponent } from '../dialogue-component/dialogue-component.component';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { from,of } from 'rxjs';
+import { concatMap,switchMap } from 'rxjs/operators';
+import { delay } from 'rxjs/operators';
+
+
+
 @Component({
   selector: 'app-loginmodule',
   templateUrl: './loginmodule.component.html',
@@ -14,8 +21,9 @@ import { Router } from '@angular/router';
 export class LoginmoduleComponent implements OnInit {
 
   signinForm:FormGroup
-  validity:Boolean
-  showLoader:Boolean=false;
+  validity:boolean
+  showLoader:boolean=false;
+  showAlert:boolean = false
 
   constructor(private authservice:AuthServiceModule,private dialog:MatDialog,private router:Router) { }
 
@@ -41,7 +49,9 @@ export class LoginmoduleComponent implements OnInit {
         localStorage.setItem('Token',res.data.tokenAuth.token)
         this.router.navigateByUrl('/dashboard/jobsearch/jobs')
       },
-      err=>{
+      (err:HttpErrorResponse)=>{
+        this.showAlert = true
+        this.showLoader=false
         console.log(err,'error here')
       }
     )
@@ -56,5 +66,6 @@ export class LoginmoduleComponent implements OnInit {
 
     this.dialog.open(DialogueComponentComponent, dialogConfig);
 }
+
 
 }

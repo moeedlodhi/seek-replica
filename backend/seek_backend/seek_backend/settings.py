@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'graphene_django'
 ]
 LOCAL_APPS = [
-    'jobsearchbars','jobs'
+    'jobsearchbars','jobs','auth_module'
 ]
 
 INSTALLED_APPS +=LOCAL_APPS

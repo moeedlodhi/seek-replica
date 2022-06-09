@@ -1,0 +1,233 @@
+
+<div appMinimenu class="row" style="background-color:#f8f9fb">
+    <div class="col-md-1">
+
+    </div>
+    <div style="background-color: #f3eeee;margin-top:5%" class="col-md-6 middlecol">
+        <div class="container">
+            <h1 class="mainHeader">Almost done</h1>
+            <p style="font-size:18px" class="mainColor">Be found by recruiters.Start a profile</p>
+        </div>
+        <div class="container" style="margin-top:10%">
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" >
+                <div class="row rowPadding" style="display:flex;justify-content:space-between">
+                    <div style="display:flex;flex-direction: column;">
+                        <label><strong>First Name</strong></label>
+                        <input placeholder="first name..." class="input1" formControlName="firstname">
+
+                    </div>
+
+                    <div style="display:flex;flex-direction: column;">
+                        <label>Last Name</label>
+                        <input placeholder="last name..." class="input1" formControlName="lastname">
+
+                    </div>
+                    
+                </div>
+
+
+
+                <div class="row rowPadding">
+
+                    <label>Job Title</label>
+                    <input placeholder="job title..." class="input2" formControlName="jobtitle">
+
+
+                </div>
+                <div class="row rowPadding">
+
+                    <label>Company Name</label>
+                    <input autocomplete="off" placeholder="company name..." class="input2" formControlName="companyname">
+
+
+                </div>
+
+                <div class="row rowPadding" style="display:flex;justify-content:flex-start">
+                    <div style="display:flex;flex-direction: column;">
+                        <label>Started Month</label>
+                        <!-- <div class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
+
+                        <input #startMonth placeholder="start month..." id="input1" readonly="True" class="input3 droparrow" formControlName="startedmonth" style="width:80%">
+                            <!-- <div id="startmonth" style="width:20%" class="droparrow"> -->
+                            <!-- </div> -->
+
+
+
+
+                        <!-- </div> -->
+                        
+                        <div>
+                            <div id="menu1" class="menu1 hide">
+                                <p (click)="setDate('startMonth',item)" *ngFor="let item of ['Jan','Feb','March','April']">{{item}}</p>
+                                
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    
+                    <div style="width:50px">
+
+                    </div>
+
+                    <div style="display:flex;flex-direction: column;" >
+                        <label>Started Year</label>
+                        <!-- <div  class="row" style="display:flex;flex-wrap: nowrap;"> -->
+
+                            <input #startYear placeholder="start year..." id="input2"  readonly="True" class="input3 droparrow" formControlName="startedyear" style="width:80%">
+                            <!-- <div id="startyear" style="width:20%" class="droparrow">
+                            </div> -->
+
+
+
+
+                        <!-- </div> -->
+
+                        <div>
+                            <div id="menu2" class="menu1 hide">
+                                <p (click)="setDate('startYear',item)" *ngFor="let item of [2010,2011,2012,2013,2014,2015,2016]">{{item}}</p>
+                             
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+
+                <div   lass="row rowPadding" style="display:flex;justify-content:flex-start">
+                    <div *ngIf="!currentlyEmployeed" style="display:flex;flex-direction: column;">
+                        <label>End Month</label>
+                        <!-- <div  class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
+
+                        <input placeholder="end month..." id="input3"  readonly="True" class="input3 droparrow" formControlName="endmonth" style="width:80%">
+                            <!-- <div id="endmonth" style="width:20%" class="droparrow">
+                            </div> -->
+
+
+
+
+                        <!-- </div> -->
+                        <div>
+                            <div id="menu3" class="menu1 hide">
+                                <p>January</p>
+                                <p>January</p>
+                                <p>January</p>
+                                <p>January</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div *ngIf="!currentlyEmployeed"  style="width:50px">
+
+                    </div>
+
+                    <div *ngIf="!currentlyEmployeed" style="display:flex;flex-direction: column;">
+                        <label>End Year</label>
+                        <!-- <div  class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
+
+                        <input placeholder="end year..." id="input4"  readonly="True" class="input3 droparrow" formControlName="endyear" style="width:80%">
+                            <!-- <div id="endyear" style="width:20%" class="droparrow">
+                            </div> -->
+
+
+
+
+                        <!-- </div> -->
+                        <div>
+                            <div id="menu4"  class="menu1 hide">
+                                <p>2011</p>
+                                <p>2012</p>
+                                <p>2013</p>
+                                <p>2014</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-check" style="display:flex;height:72px;flex-direction:column;justify-content:center">
+                        <input (click)="currentlyWorking()" formControlName="checkbox" style="margin-top:20px;height:18px;width:18px;margin-left:-1.5rem" class="form-check-input" type="checkbox"  id="flexCheckDefault">
+                        <label style="margin-top:20px"  class="form-check-label" for="flexCheckDefault">
+                          Working here
+                        </label>
+                    </div>
+                    
+                </div>
+
+
+                <div class="row">
+
+                    <label>Country</label>
+                    <input placeholder="country..." id="input5" readonly="True" autocomplete="off"   #country class="input2" formControlName="livesin">
+
+
+                </div>
+                <div>
+                    <div id="menu5"  class="menu2 hide">
+                        <strong>Asia</strong>
+                        <ul *ngFor="let item of [1,2,3,4]">
+                            <li (click)="defineCountry(item)">Pakistan</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+
+                <div [hidden]="!showCity" class="row rowPadding" style="display:flex;flex-direction: column;">
+
+                    <label>City</label>
+                    <input #city autocomplete="off" readonly="True" id="input6" placeholder="ciiy..." class="input2" formControlName="livesincity" >
+                    <div>
+                        <div id="menu6"  class="menu2 hide">
+                            <strong>Asia</strong>
+                            <ul *ngFor="let item of ['karachi','lahore','rawalpindi','islamabad']">
+                                <li (click)="defineCity(item)">{{item}}</li>
+                            </ul>
+                        </div>
+    
+                    </div>
+
+                </div>
+               
+
+
+
+
+
+
+
+                <div class="row rowPadding" style="display:flex;flex-direction: column;">
+
+                    <label>Classification</label>
+                    <input autocomplete="off" #classification placeholder="classification..." id="input7" class="input2 droparrow" formControlName="preferredclassification">
+                    <div>
+                        <div id="menu7"  class="menu2 hide">
+                            <strong>Asia</strong>
+                            <ul *ngFor="let item of [1,2,3,4]">
+                                <li (click)="defineClass(item)">Engineering</li>
+                            </ul>
+                        </div>
+    
+                    </div>
+
+                </div>
+                <div style="width:100%;height:100px">
+                </div>
+            
+                <button type="submit"  id="seekButton2" style="width:50%;background-color:#e60078;border:0px"   class="button btn btn-primary">Save and Proceed</button>
+
+            </form>
+        
+        </div>
+
+
+    </div>
+    <div class="col-md-5">
+
+    </div>
+</div>

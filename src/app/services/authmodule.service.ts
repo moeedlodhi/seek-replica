@@ -1,5 +1,6 @@
 import { Apollo,gql } from "apollo-angular";
 import { Injectable } from "@angular/core";
+import { map } from "rxjs/operators";
 
 
 @Injectable({
@@ -31,6 +32,32 @@ export class AuthServiceModule{
                   }
             }`,variables:{
                 token:token
+            }
+        })
+    }
+
+    registerUser(username:string,password:string,email:string){
+        return this.apollo.mutate({
+            mutation:gql`mutation RegisterUser($username:String!,$email:String!,$password:String!){
+
+                registerUser(username:$username,password:$password,email:$email){
+                    ok
+                    error
+                    user{
+                      username
+                      email
+                      candidate{
+                        id
+                        firstRegistration
+                      }
+                    }
+                  }
+
+            }`,
+            variables:{
+                username:username,
+                password:password,
+                email:email
             }
         })
     }

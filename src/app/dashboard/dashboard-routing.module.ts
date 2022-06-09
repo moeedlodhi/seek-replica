@@ -6,6 +6,7 @@ import { DashboardComponent } from "./dashboard.component";
 import { JoblistComponent } from "./jobsearch/joblist/joblist.component";
 import { JobsearchComponent } from "./jobsearch/jobsearch.component";
 import { JobsubsearchComponent } from "./jobsearch/jobsubsearch/jobsubsearch.component";
+import { GettingstartedComponent } from "./profile/gettingstarted/gettingstarted.component";
 import { ProfileComponent } from "./profile/profile.component";
 
 
@@ -18,7 +19,9 @@ const routes:Routes=[
         {path:'jobs',component:JobsubsearchComponent},
         {path:'joblist',component:JoblistComponent}
     ]},
-    {path:'profile',component:ProfileComponent},
+    {path:'profile',component:ProfileComponent,children:[
+        {path:'gettingstarted',component:GettingstartedComponent}
+    ]},
     {path:'careeradvice',component:CareeradviceComponent}
 ]}]
 
