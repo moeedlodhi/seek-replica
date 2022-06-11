@@ -51,4 +51,5 @@ class JobsQueries(graphene.ObjectType):
 
         print(jobs_filtered,jobs_filtered.count())                                  
         list1 = {"count":jobs_filtered.count(),"jobs":jobs_filtered}
-        return list1                                                                
+        return list1 
+

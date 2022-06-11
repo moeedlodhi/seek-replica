@@ -46,6 +46,11 @@ LOCAL_APPS = [
 
 INSTALLED_APPS +=LOCAL_APPS
 
+AUTHENTICATION_BACKENDS = [
+    "graphql_jwt.backends.JSONWebTokenBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -58,7 +63,7 @@ MIDDLEWARE = [
 ]
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
-    "JWT_EXPIRATION_DELTA": timedelta(minutes=1),
+    "JWT_EXPIRATION_DELTA": timedelta(minutes=10),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
 }
 GRAPHENE = {

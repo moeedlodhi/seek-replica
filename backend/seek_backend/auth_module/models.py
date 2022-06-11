@@ -6,5 +6,19 @@ from django.contrib.auth.models import User
 
 class candidate(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='candidate')
+    first_name = models.CharField(max_length=264,null=True,blank=True)
+    last_name = models.CharField(max_length=264,null=True,blank=True)
+    job_title = models.CharField(max_length=264,null=True,blank=True)
+    company_name = models.CharField(max_length=264,null=True,blank=True)
+    start_date = models.DateTimeField(null=True,blank=True)
+    end_date = models.DateTimeField(null=True,blank=True)
+    country = models.CharField(max_length=264,null=True,blank=True)
+    city = models.CharField(max_length=264,null=True,blank=True)
+    classification = models.CharField(max_length=264,null=True,blank=True)
     first_registration = models.BooleanField(default = True)
+    current_working = models.BooleanField(default = False) 
+
+    def __str__(self):
+        return self.user.username
+
 

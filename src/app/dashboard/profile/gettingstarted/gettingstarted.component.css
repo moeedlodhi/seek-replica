@@ -46,6 +46,7 @@
     width:144px;
     overflow-y: scroll;
     max-height: 200px;
+    z-index:1
 
 }
 .hide{

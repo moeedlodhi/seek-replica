@@ -13,11 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterModule } from './registermodule/registermodule.module';
 import { GraphQLModule } from './graphql.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthServiceModule } from './services/authmodule.service';
 import {MatDialogModule} from '@angular/material/dialog';
-import { mainService } from './services/subject.service';
+import { DataService, mainService } from './services/subject.service';
 import { EffectsModule } from '@ngrx/effects';
+import { StartedGuard } from './authentication.guard';
+import { HttpinterceptopService } from './http.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,7 @@ import { EffectsModule } from '@ngrx/effects';
     MatDialogModule,
     EffectsModule
   ],
-  providers: [AuthServiceModule,mainService],
+  providers: [AuthServiceModule,mainService,DataService,{ provide: HTTP_INTERCEPTORS, useClass: HttpinterceptopService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

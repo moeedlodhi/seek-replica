@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AuthenticationGuard } from "../authentication.guard";
+import { AuthenticationGuard, StartedGuard } from "../authentication.guard";
 import { CareeradviceComponent } from "./careeradvice/careeradvice.component";
 import { DashboardComponent } from "./dashboard.component";
 import { JoblistComponent } from "./jobsearch/joblist/joblist.component";
@@ -8,7 +8,7 @@ import { JobsearchComponent } from "./jobsearch/jobsearch.component";
 import { JobsubsearchComponent } from "./jobsearch/jobsubsearch/jobsubsearch.component";
 import { GettingstartedComponent } from "./profile/gettingstarted/gettingstarted.component";
 import { ProfileComponent } from "./profile/profile.component";
-
+import { CanActivate } from "@angular/router";
 
 const routes:Routes=[
     
@@ -20,7 +20,7 @@ const routes:Routes=[
         {path:'joblist',component:JoblistComponent}
     ]},
     {path:'profile',component:ProfileComponent,children:[
-        {path:'gettingstarted',component:GettingstartedComponent}
+        {path:'gettingstarted',canActivate:[StartedGuard],component:GettingstartedComponent}
     ]},
     {path:'careeradvice',component:CareeradviceComponent}
 ]}]
@@ -28,7 +28,7 @@ const routes:Routes=[
 
 @NgModule({
     imports:[
-        RouterModule.forChild(routes)
+        RouterModule.forRoot(routes,{scrollPositionRestoration: 'enabled'})
     ],
     exports:[RouterModule]
 })

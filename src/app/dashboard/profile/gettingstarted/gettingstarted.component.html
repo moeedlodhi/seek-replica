@@ -58,7 +58,7 @@
                         
                         <div>
                             <div id="menu1" class="menu1 hide">
-                                <p (click)="setDate('startMonth',item)" *ngFor="let item of ['Jan','Feb','March','April']">{{item}}</p>
+                                <p (click)="setDate('startMonth',item)" *ngFor="let item of ['Jan','Feb','Mar','Apr']">{{item}}</p>
                                 
                             </div>
 
@@ -96,12 +96,13 @@
                 </div>
 
 
-                <div   lass="row rowPadding" style="display:flex;justify-content:flex-start">
-                    <div *ngIf="!currentlyEmployeed" style="display:flex;flex-direction: column;">
+                <div   class="row rowPadding" style="display:flex;justify-content:flex-start">
+                    
+                    <div [@fadeInOut] [hidden]="currentlyEmployeed" style="display:flex;flex-direction: column;">
                         <label>End Month</label>
                         <!-- <div  class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
 
-                        <input placeholder="end month..." id="input3"  readonly="True" class="input3 droparrow" formControlName="endmonth" style="width:80%">
+                        <input #endMonth placeholder="end month..." id="input3"  readonly="True" class="input3 droparrow" formControlName="endmonth" style="width:80%">
                             <!-- <div id="endmonth" style="width:20%" class="droparrow">
                             </div> -->
 
@@ -111,24 +112,22 @@
                         <!-- </div> -->
                         <div>
                             <div id="menu3" class="menu1 hide">
-                                <p>January</p>
-                                <p>January</p>
-                                <p>January</p>
-                                <p>January</p>
+                                <p (click)="setDate('endMonth',item)" *ngFor="let item of ['Jan','Feb','Mar','Apr']">{{item}}</p>
+                        
                             </div>
 
                         </div>
 
                     </div>
-                    <div *ngIf="!currentlyEmployeed"  style="width:50px">
+                    <div [@fadeInOut] [hidden]="currentlyEmployeed"  style="width:50px">
 
                     </div>
 
-                    <div *ngIf="!currentlyEmployeed" style="display:flex;flex-direction: column;">
+                    <div [@fadeInOut] [hidden]="currentlyEmployeed" style="display:flex;flex-direction: column;">
                         <label>End Year</label>
                         <!-- <div  class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
 
-                        <input placeholder="end year..." id="input4"  readonly="True" class="input3 droparrow" formControlName="endyear" style="width:80%">
+                        <input #endYear placeholder="end year..." id="input4"  readonly="True" class="input3 droparrow" formControlName="endyear" style="width:80%">
                             <!-- <div id="endyear" style="width:20%" class="droparrow">
                             </div> -->
 
@@ -138,10 +137,8 @@
                         <!-- </div> -->
                         <div>
                             <div id="menu4"  class="menu1 hide">
-                                <p>2011</p>
-                                <p>2012</p>
-                                <p>2013</p>
-                                <p>2014</p>
+                                <p (click)="setDate('endYear',item)" *ngFor="let item of ['2011','2012','2022','2021']">{{item}}</p>
+                              
                             </div>
 
                         </div>
@@ -168,8 +165,8 @@
                 <div>
                     <div id="menu5"  class="menu2 hide">
                         <strong>Asia</strong>
-                        <ul *ngFor="let item of [1,2,3,4]">
-                            <li (click)="defineCountry(item)">Pakistan</li>
+                        <ul *ngFor="let item of ['pak','ind','uk','usa']">
+                            <li (click)="defineCountry(item)">{{item}}</li>
                         </ul>
                     </div>
 
@@ -204,12 +201,12 @@
                 <div class="row rowPadding" style="display:flex;flex-direction: column;">
 
                     <label>Classification</label>
-                    <input autocomplete="off" #classification placeholder="classification..." id="input7" class="input2 droparrow" formControlName="preferredclassification">
+                    <input readonly="True" autocomplete="off" #classification placeholder="classification..." id="input7" class="input2 droparrow" formControlName="preferredclassification">
                     <div>
                         <div id="menu7"  class="menu2 hide">
                             <strong>Asia</strong>
-                            <ul *ngFor="let item of [1,2,3,4]">
-                                <li (click)="defineClass(item)">Engineering</li>
+                            <ul *ngFor="let item of ['engineering','medical','law']">
+                                <li (click)="defineClass(item)">{{item}}</li>
                             </ul>
                         </div>
     

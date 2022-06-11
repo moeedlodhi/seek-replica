@@ -18,6 +18,7 @@ import { HidesideDirective,DropdownDirective } from './directives/hideside.direc
 import { GettingstartedComponent } from './profile/gettingstarted/gettingstarted.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { MinimenuDirective } from './directives/minimenu.directive';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations:[
@@ -44,7 +45,9 @@ import { MinimenuDirective } from './directives/minimenu.directive';
         BrowserModule,
         MatMenuModule,
         MatListModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule
+  
     ]
     ,exports:[
 

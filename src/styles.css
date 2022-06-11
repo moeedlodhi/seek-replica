@@ -2,6 +2,7 @@
 body{
     margin:0px;
     overflow-x: hidden;
+    overflow: scroll;
 }
 p{
     margin-block-start: 0px;

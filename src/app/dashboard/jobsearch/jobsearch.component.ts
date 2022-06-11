@@ -62,13 +62,9 @@ export class JobsearchComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const search1 = this.jobsearchservice.jobsearchterms("dj").pipe(
-      map((res:any)=>{
-        console.log(res)
-      })
-    )
-    console.log(search1)
-  
+    this.mainService.sendMessage('showJob')
+
+   
 
   }
 

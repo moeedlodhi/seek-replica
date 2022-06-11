@@ -1,6 +1,7 @@
 import { Apollo,gql } from "apollo-angular";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
+import { ClassificationInfo } from "typescript";
 
 
 @Injectable({
@@ -61,4 +62,48 @@ export class AuthServiceModule{
             }
         })
     }
+
+    gettingStarted(firstName:string,lastName:string,jobTitle:string,companyName:string,
+                   startedMonth:string,startedYear:string,currentWorking:boolean,endMonth:string,endYear:string,
+                   country:string,city:string,classification:string){
+            return this.apollo.mutate({
+                mutation:gql`mutation gettingStarted($firstName:String!,$lastName:String!,$jobTitle:String!,$companyName:String!,
+                    $startedMonth:String!,$startedYear:String!,$currentWorking:Boolean!,$endMonth:String!,$endYear:String!,
+                    $country:String!,$city:String!,$classification:String!){
+                        userGettingStarted(firstName:$firstName,lastName:$lastName,
+                            jobTitle:$jobTitle,companyName:$companyName,startedMonth:$startedMonth,startedYear:$startedYear,
+                            currentWorking:$currentWorking,endMonth:$endMonth,endYear:$endYear,country:$country,
+                            city:$city,classification:$classification){
+                            ok
+                            error
+                          }
+                    }`,variables:{
+
+                        firstName:firstName,
+                        lastName:lastName,
+                        jobTitle:jobTitle,
+                        companyName:companyName,
+                        startedMonth:startedMonth,
+                        startedYear:startedYear,
+                        currentWorking:currentWorking,
+                        endMonth:endMonth,
+                        endYear:endYear,
+                        country:country,
+                        city:city,
+                        classification:classification
+
+                    }
+            })
+        }
+
+        verifyStatus(randomArg:string=''){
+            return this.apollo.mutate({
+                mutation:gql `mutation{
+                    verifyUserStatus(randomArgument:""){
+                      ok
+                      error
+                    }
+                  }`
+            })
+        }
 }  

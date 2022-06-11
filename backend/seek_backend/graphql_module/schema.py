@@ -2,7 +2,7 @@ from auth_module.schema import AuthMutations,UserQueries
 from jobsearchbars.schema import JobSearchBarQueries
 from jobs.schema import JobsQueries
 import graphene
-class Mutations(
+class Mutation(
     AuthMutations
 
 ):pass
@@ -14,5 +14,5 @@ class Query(
 
 ):pass
 
-schema = graphene.Schema(query=Query, mutation=Mutations, types=[])
+schema = graphene.Schema(query=Query, mutation=Mutation, types=[])
 

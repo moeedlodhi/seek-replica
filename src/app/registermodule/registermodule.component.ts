@@ -52,9 +52,10 @@ export class RegistermoduleComponent implements OnInit {
         const username = res.data.tokenAuth.payload.username
         localStorage.setItem('Token',token)
         localStorage.setItem('username',username)
+        localStorage.setItem('gettingStarted','false')
         await setTimeout(()=>{
 
-          this.loader = false
+          
           this.router.navigate(['dashboard','profile','gettingstarted'])
 
         },2000)
