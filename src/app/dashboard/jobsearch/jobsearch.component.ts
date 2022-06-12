@@ -442,9 +442,11 @@ export class JobsearchComponent implements OnInit {
   assignKeyword(item,event){
     console.log(event.target,'yooo')
     this.keywordJob.nativeElement.value = item.name
+    this.keywordLength=true
   }
 
   assignLocation(item,event){
+    this.keywordRegionLength=true
     console.log(event.target,'yooo')
     this.keywordRegion.nativeElement.value = item.name
   }

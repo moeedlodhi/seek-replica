@@ -5,6 +5,25 @@ import { DataService, mainService } from 'src/app/services/subject.service';
 import { AuthServiceModule } from 'src/app/services/authmodule.service';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AbstractControl } from '@angular/forms';
+
+
+
+// function endValidator(formControl: AbstractControl) {
+
+//   if (!formControl.parent) {
+//     return null;
+//   }
+  
+//   if (formControl.parent.get('checkbox').value === false) {
+//     return Validators.required(formControl); 
+//   }else{
+//     return null
+//   }
+//   return null;
+// }
+
+
 
 
 @Component({
@@ -59,7 +78,7 @@ export class GettingstartedComponent implements OnInit {
 
 
     })
-    this.mainservice.sendMessage('showProfile')
+    this.mainservice.sendMessage('changeTab')
   }
  
 
@@ -111,13 +130,21 @@ export class GettingstartedComponent implements OnInit {
   
       endYear.value = ''
       endMonth.value = ''
+      endYear.clearValidators()
+      endYear.updateValueAndValidity()
+      endMonth.clearValidators()
+      endMonth.updateValueAndValidity()
      
     }
     else{
       this.endMonth.nativeElement.value = null
       this.endYear.nativeElement.value = null
-      endYear.reset()
-      endMonth.reset()
+
+      endYear.setValidators([Validators.required])
+      endYear.updateValueAndValidity()
+      endMonth.setValidators([Validators.required])
+      endMonth.updateValueAndValidity()
+     
      
   
 
@@ -180,9 +207,15 @@ export class GettingstartedComponent implements OnInit {
       control.markAsTouched({onlySelf:true})
   
     });
+
+
+    console.log(this.profileForm)
+
     if(this.profileForm.status ==='INVALID'){
+
       return
     }else{
+  
       const firstName = this.profileForm.get('firstname').value
       const lastname = this.profileForm.get('lastname').value
       const jobtitle = this.profileForm.get('jobtitle').value
