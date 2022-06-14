@@ -14,7 +14,6 @@ graphql-core==2.3.2
 graphql-relay==2.0.1
 idna==3.3
 promise==2.3
-psycopg2==2.9.3
 PyJWT==2.3.0
 pytz==2022.1
 requests==2.27.1
