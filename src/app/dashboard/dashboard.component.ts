@@ -115,9 +115,24 @@ export class DashboardComponent implements OnInit,OnDestroy, OnChanges, AfterCon
 }
 toggleImage(){
 
-  this.toggled=!this.toggled
   let doc =document.getElementById('mainarrow')
-  doc.classList.toggle('spinimage1')      
+ 
+
+  let doc2 = document.getElementById('sideWindow1')
+  if(this.toggled === false){
+    doc.classList.toggle('spinimage1')
+    this.toggled = true
+    doc2.classList.remove('hide')
+    doc2.classList.add('visible')
+
+  }else{
+    doc.classList.toggle('spinimage1')
+    this.toggled= false
+    doc2.classList.remove('visible')
+    doc2.classList.add('hide')
+
+  }
+
 
 }  
 

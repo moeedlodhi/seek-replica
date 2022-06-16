@@ -78,4 +78,36 @@ a:hover {
 
   }
 
+  .relevancePopup{
+    width:250px;
+    background-color: #fff;
+    border: 1px solid  #dcd4d4;
+    position: absolute;
+    z-index: 11;
+    border-radius: 5px;
+    padding:10px;
+    box-shadow:  -10px 10px 18px #00000029;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left:30%;
+    margin-top:8%;
+  
+  }   
+  .pLeft{
+    text-align: left;
+  }
+
+  .hide{
+    display:none
+  }
+  .visible{
+    transition: visibility 0s, opacity 0.2s linear;
+    display: block;
+  } 
+
+  .btn1{
+    width:100%
+  }
+   
 

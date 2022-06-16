@@ -45,12 +45,33 @@
 
         <div *ngIf="!showSignInBar" class="row" style="margin-top:4%;margin-left:30%">
             <p class="signIn" style="color:black;padding-left:5px;padding-right:5px">{{username}}</p>
-            <button class="menuButton" mat-button [matMenuTriggerFor]="menu">
+            <button class="menuButton" >
                 <img id="mainarrow" (click)="toggleImage()" class="spinimage spinimage1" src="/assets/whitearrow.png" style="height:25px">
             </button>
             <div style="width:34px;height:2px"></div>
             <a class="signIn">Employer site</a>
         </div>
+
+        <div id="sideWindow1" class="relevancePopup hide">
+            <button mat-button class="btn1">
+                <p class="pLeft" style="font-size:18px" >Profile</p>
+            </button>
+            <button mat-button class ="btn1">
+                <p class="pLeft" style="font-size:18px" >Saved Searches</p>
+            </button>
+            <button mat-button class="btn1">
+                <p class="pLeft" style="font-size:18px" >Saved Jobs</p>
+            </button>
+            <button mat-button class="btn1">
+                <p class="pLeft" style="font-size:18px" >Applied Jobs</p>
+            </button>
+            <button mat-button class="btn1">
+                <p class="pLeft" style="font-size:18px" >Recommended Jobs</p>
+            </button>
+            
+          
+        </div> 
+        
         
    
 
@@ -85,4 +106,8 @@
 </div>
 <div style="width:100%;height:10px;background-color: #0d3880;">
 </div>
+
+
+
+
 <router-outlet></router-outlet>

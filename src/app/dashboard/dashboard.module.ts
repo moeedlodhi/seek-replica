@@ -19,6 +19,7 @@ import { GettingstartedComponent } from './profile/gettingstarted/gettingstarted
 import { ReactiveFormsModule } from "@angular/forms";
 import { MinimenuDirective } from './directives/minimenu.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button'
 
 @NgModule({
     declarations:[
@@ -46,7 +47,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatMenuModule,
         MatListModule,
         ReactiveFormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatButtonModule
   
     ]
     ,exports:[
