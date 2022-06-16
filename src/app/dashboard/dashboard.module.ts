@@ -14,7 +14,7 @@ import { HeaderComponent } from "../header/header.component";
 import {MatMenuModule} from '@angular/material/menu';
 import { JoblistComponent } from './jobsearch/joblist/joblist.component';
 import { HighlightDirective } from './directives/highlight.directive';
-import { HidesideDirective,DropdownDirective } from './directives/hideside.directive';
+import { HidesideDirective,DropdownDirective, HidesideDirectiveSecond } from './directives/hideside.directive';
 import { GettingstartedComponent } from './profile/gettingstarted/gettingstarted.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { MinimenuDirective } from './directives/minimenu.directive';
@@ -35,6 +35,7 @@ import {MatButtonModule} from '@angular/material/button'
         JoblistComponent,
         HighlightDirective,
         HidesideDirective,
+        HidesideDirectiveSecond,
         DropdownDirective,
         GettingstartedComponent,
         MinimenuDirective

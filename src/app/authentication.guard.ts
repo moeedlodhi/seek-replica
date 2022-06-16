@@ -46,12 +46,43 @@ export class StartedGuard implements CanActivate{
 
         return this.authservice.verifyStatus('').pipe(
             map((res:any)=>{
-                
+
+                this.router.navigateByUrl('dashboard/profile/gettingstarted')
                 return true
             }
     
         ),catchError((error) => {
+            
+            return of(true);
+        }))
+        
+
+    }
+} 
+
+
+
+@Injectable({
+    providedIn: 'root'
+})
+export class GettingStartedGuard implements CanActivate{
+    constructor(private authservice:AuthServiceModule,private router:Router){}
+
+   
+    public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):any{
+     
+        
+
+        return this.authservice.verifyStatus('').pipe(
+            map((res:any)=>{
+            
+                return true
+            }
+    
+        ),catchError((error) => {
+
             this.router.navigateByUrl('dashboard/jobsearch/jobs')
+        
             return of(true);
         }))
         

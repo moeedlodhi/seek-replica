@@ -39,6 +39,35 @@ export class HidesideDirective {
 
 }
 
+
+@Directive({
+  selector: '[appHidesideSecond]'
+})
+export class HidesideDirectiveSecond {
+
+  constructor(private el:ElementRef) { }
+
+  
+
+  @HostListener('document:click',['$event']) onGlobalClick(event){
+
+    console.log('clicking')
+    let doc = document.getElementById('sideWindow1')
+    let doc2 = document.getElementById('mainarrow')
+    console.log(doc,'hahah')
+    if(doc.classList.contains('visible') && event.target.id != 'mainarrow'){
+      doc.classList.remove('visible')
+      doc.classList.add('hide')
+      doc2.click()
+
+    }
+
+}
+
+
+
+}
+
 @Directive({
   selector: '[appDropdown]'
 })

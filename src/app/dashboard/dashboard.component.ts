@@ -134,6 +134,12 @@ toggleImage(){
   }
 
 
-}  
+}
+redirectTab(item){
+  if (item === 'profile'){
+    let doc = document.getElementById('profileTab')
+    doc.click()
+  }
+}
 
 }

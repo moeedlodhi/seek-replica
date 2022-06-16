@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { AuthenticationGuard, StartedGuard } from "../authentication.guard";
+import { AuthenticationGuard, GettingStartedGuard, StartedGuard } from "../authentication.guard";
 import { CareeradviceComponent } from "./careeradvice/careeradvice.component";
 import { DashboardComponent } from "./dashboard.component";
 import { JoblistComponent } from "./jobsearch/joblist/joblist.component";
@@ -19,8 +19,9 @@ const routes:Routes=[
         {path:'jobs',component:JobsubsearchComponent},
         {path:'joblist',component:JoblistComponent}
     ]},
-    {path:'profile',component:ProfileComponent,children:[
-        {path:'gettingstarted',canActivate:[StartedGuard],component:GettingstartedComponent}
+    {path:'profile/gettingstarted',canActivate:[GettingStartedGuard],component:GettingstartedComponent},
+    {path:'profile',canActivate:[StartedGuard],component:ProfileComponent,children:[
+        
     ]},
     {path:'careeradvice',component:CareeradviceComponent}
 ]}]

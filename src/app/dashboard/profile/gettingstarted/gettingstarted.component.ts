@@ -70,7 +70,7 @@ export class GettingstartedComponent implements OnInit {
       'endmonth':new FormControl(null,Validators.required),
       'endyear':new FormControl(null,Validators.required),
       'livesin':new FormControl(null,Validators.required),
-      'livesincity':new FormControl(null),
+      'livesincity':new FormControl(null,Validators.required),
       'preferredclassification':new FormControl(null,Validators.required),
       'checkbox':new FormControl(false)
       
@@ -78,7 +78,7 @@ export class GettingstartedComponent implements OnInit {
 
 
     })
-    this.mainservice.sendMessage('changeTab')
+    this.mainservice.sendMessage('showProfile')
   }
  
 

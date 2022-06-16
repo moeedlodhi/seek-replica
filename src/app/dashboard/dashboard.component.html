@@ -52,8 +52,8 @@
             <a class="signIn">Employer site</a>
         </div>
 
-        <div id="sideWindow1" class="relevancePopup hide">
-            <button mat-button class="btn1">
+        <div appHidesideSecond id="sideWindow1" class="relevancePopup hide">
+            <button (click)="redirectTab('profile')" mat-button class="btn1">
                 <p class="pLeft" style="font-size:18px" >Profile</p>
             </button>
             <button mat-button class ="btn1">
@@ -87,7 +87,7 @@
             <div id="jobsearchbutton"  [routerLink]="['/dashboard/jobsearch/jobs']" [ngClass]="{'selectedColor':selectedTab==='job'}" (click)="changeMainColor('job')" style="text-align:center;height:48px" class="col-md-3 padding">
                 <p class="tabBar">Job Search</p>
             </div>
-            <div [routerLink]="['/dashboard/profile']" [ngClass]="{'selectedColor':selectedTab==='profile'}" (click)="changeMainColor('profile')" style="text-align:center;height:48px" class="col-md-3 padding">
+            <div id="profileTab" [routerLink]="['/dashboard/profile']" [ngClass]="{'selectedColor':selectedTab==='profile'}" (click)="changeMainColor('profile')" style="text-align:center;height:48px" class="col-md-3 padding">
                 <p class="tabBar">Profile</p>
             </div>
             <div  [routerLink]="['/dashboard/careeradvice']" [ngClass]="{'selectedColor':selectedTab==='career'}" (click)="changeMainColor('career')" style="text-align:center;height:48px" class="col-md-3 padding">
