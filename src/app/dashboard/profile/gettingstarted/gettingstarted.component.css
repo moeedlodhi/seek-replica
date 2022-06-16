@@ -12,7 +12,7 @@
 }
 
 .input1{
-    width: 254px;
+    width: 300px;
     height: 44px;
     border: 1px solid grey;
     border-radius: 4px;
@@ -35,7 +35,7 @@
 
 .rowPadding{
     padding-left:0px;
-    padding-top:20px;
+    padding-top:0px;
     padding-bottom: 20px;
 }
 .menu1{

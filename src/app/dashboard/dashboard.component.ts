@@ -100,7 +100,7 @@ export class DashboardComponent implements OnInit,OnDestroy, OnChanges, AfterCon
         else if(res==='showProfile'){
           this.selectedTab = 'profile'
         }
-
+        
       }
     )
   
