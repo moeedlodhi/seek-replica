@@ -4,9 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthServiceModule } from '../services/authmodule.service';
-import { switchMap, mergeMap,concatMap,map } from 'rxjs/operators';
+import { switchMap, mergeMap,concatMap,map, filter } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-registermodule',
   templateUrl: './registermodule.component.html',
@@ -37,17 +38,22 @@ export class RegistermoduleComponent implements OnInit {
     var username1 = ''
     var password1 = ''
     this.loader = true
-    this.authservice.registerUser(username,password,email).pipe(map(
-      (res1:any)=>{
-        const res = res1.data.registerUser
-        return res
-        
-
-        
+    this.authservice.registerUser(username,password,email).pipe(map((res:any)=>{
+      const res1 = res.data.registerUser
+      if(res1.ok ==='False'){
+        this.loader = false;
+        this.showAlert = true;
       }
-    ),mergeMap((res)=>this.authservice.loginUser(res.user.username,password))).subscribe(
+      return res1
+    }),filter(
+
+      (res:any) => res.ok ==='True'
+  
+      
+    ),switchMap((res:any)=>this.authservice.loginUser(res.user.username,password))
+    ).subscribe(
       async (res:any)=>{
-        console.log(res,'hahaha')
+
         const token = res.data.tokenAuth.token
         const username = res.data.tokenAuth.payload.username
         localStorage.setItem('Token',token)
@@ -59,14 +65,9 @@ export class RegistermoduleComponent implements OnInit {
           this.router.navigate(['dashboard','profile','gettingstarted'])
 
         },2000)
-        
       }
     )
-    
-
-
-    
-    
+  
     this.validity=!this.validity;
   }  
 
