@@ -102,6 +102,14 @@ export class AuthServiceModule{
                     verifyUserStatus(randomArgument:""){
                       ok
                       error
+                      candidateField{
+                        country
+                        city
+                        user{
+                          email
+                          username
+                        }
+                      }
                     }
                   }`
             })

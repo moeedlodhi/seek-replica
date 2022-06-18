@@ -118,16 +118,17 @@ class VerifyUserStatus(graphene.Mutation):
         random_argument = graphene.String()
 
     ok = graphene.String()
-    error = graphene.String() 
+    error = graphene.String()
+    candidate_field = graphene.Field(CandidateObjectType) 
 
     @login_required
     def mutate(self, info,**kwargs):
         user = info.context.user
         candidate_to_get = candidate.objects.filter(user = user).first()
         if candidate_to_get.first_registration == False:
-            raise Exception({"status":"false"})
+            return VerifyUserStatus(ok='False', error='None', candidate_field = candidate_to_get)
         else:
-            return VerifyUserStatus(ok='True', error='None')    
+            return VerifyUserStatus(ok='True', error='None', candidate_field = candidate_to_get)    
         
 
 

@@ -45,10 +45,31 @@ export class StartedGuard implements CanActivate{
         
 
         return this.authservice.verifyStatus('').pipe(
+            
             map((res:any)=>{
+                if(res.data.verifyUserStatus.ok==='True'){
+                    this.router.navigateByUrl('dashboard/profile/gettingstarted')
+                    return true
+                }else{
+                    const resUser = res.data.verifyUserStatus.candidateField.user
+                    const resCandidate = res.data.verifyUserStatus.candidateField
 
-                this.router.navigateByUrl('dashboard/profile/gettingstarted')
-                return true
+
+                    const username = resUser.username
+                    const email = resUser.email
+                    const country = resCandidate.country
+                    const city = resCandidate.city
+
+                    localStorage.setItem('username',username)
+                    localStorage.setItem('email',email)
+                    localStorage.setItem('country',country)
+                    localStorage.setItem('city',city)
+
+
+
+                    return true
+                }
+               
             }
     
         ),catchError((error) => {
@@ -75,8 +96,15 @@ export class GettingStartedGuard implements CanActivate{
 
         return this.authservice.verifyStatus('').pipe(
             map((res:any)=>{
-            
-                return true
+                if(res.data.verifyUserStatus.ok==='True'){
+                    
+                    return true
+                }else{
+                    this.router.navigateByUrl('dashboard/jobsearch/jobs')
+        
+                    return true;
+                }
+               
             }
     
         ),catchError((error) => {
