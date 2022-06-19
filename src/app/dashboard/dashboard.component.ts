@@ -142,4 +142,10 @@ redirectTab(item){
   }
 }
 
+logoutUser(){
+  localStorage.clear()
+  location.reload()
+
+}
+
 }
