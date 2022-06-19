@@ -3,6 +3,10 @@ body{
     margin:0px;
     overflow-x: hidden;
     overflow: scroll;
+    height:100%
+}
+html{
+    height: 100%;
 }
 p{
     margin-block-start: 0px;

@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit,OnDestroy, OnChanges, AfterCon
   showSignInBar:Boolean;
   username:any;
   toggled:Boolean=false
+  showSavedSearchb:boolean = false
 
   constructor(
     private router:Router,
@@ -145,6 +146,20 @@ redirectTab(item){
 logoutUser(){
   localStorage.clear()
   location.reload()
+
+}
+rotateimage(item){
+  let doc =document.getElementById(item)
+  if(this.showSavedSearchb === false){
+    this.showSavedSearchb = true
+    doc.classList.toggle('spinimage1')
+  }else{
+    this.showSavedSearchb = false
+    doc.classList.toggle('spinimage1')
+
+  }
+  
+     
 
 }
 

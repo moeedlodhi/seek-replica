@@ -1,3 +1,24 @@
+<div *ngIf="showSavedSearchb" id="savedSearchb" style="margin-top:10%;background-color:white;width:100%;height:100%;position:absolute;z-index: 1100;">
+    <button mat-button class ="btn1">
+        <p class="pLeft" style="font-size:18px" >Job Search</p>
+    </button>
+
+    <button mat-button class ="btn1">
+        <p class="pLeft" style="font-size:18px" >Profile</p>
+    </button>
+
+    <button mat-button class ="btn1">
+        <p class="pLeft" style="font-size:18px" >Career Advice</p>
+    </button>
+
+    <button mat-button class ="btn1">
+        <p class="pLeft" style="font-size:18px" >Company Reviews</p>
+    </button> 
+</div>
+
+
+
+
 <mat-menu #menu="matMenu" xPosition="before" >
     <div style="width:200px">
         <button mat-menu-item>Profile</button>
@@ -32,13 +53,18 @@
 <app-header></app-header>
 <div class="row" style="height:78px;width:100%">
     <div class="col-md-6" id="hideBar">
-        <div class="container">
+        <div id="menuOpen" class="container row" style="display:flex;justify-content: flex-end;margin-top:2%">
+            <p style="color:white">Menu</p>
+            <img id="menuImage"  (click)="rotateimage('menuImage')" class="spinimage spinimage1" src="/assets/whitearrow.png" style="height:15px;margin-left:1%;margin-top:2px">
             <!-- <img style="margin-left:18%;margin-top:2%" src="/assets/seekpic.png"> -->
         </div>
 
    
 
     </div>
+
+    
+    
     <div class="col-md-6 row" id="divBar">
         <div *ngIf="showSignInBar" class="row" style="margin-top:4%;margin-left:30%">
             <a [routerLink]="['/login']" class="signIn">Sign in </a>
@@ -90,7 +116,7 @@
     </div>
     
 </div>
-<div id="rowpadding1" class="row padding" style="width:100%;height:48px">
+<div *ngIf="!showSavedSearchb" id="rowpadding1" class="row padding" style="width:100%;height:48px">
 
     <div class="col-md-1 padding" ></div>
     <div class="container col-md-10" style="width:100%;height:48px">
@@ -116,10 +142,9 @@
     <div class="col-md-1 padding" ></div>
 
 </div>
-<div style="width:100%;height:10px;background-color: #0d3880;">
+<div *ngIf="showSavedSearchb" style="width:100%;height:10px;background-color: #0d3880;">
 </div>
 
 
 
-
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!showSavedSearchb"></router-outlet>
