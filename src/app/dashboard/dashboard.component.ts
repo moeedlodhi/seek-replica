@@ -9,7 +9,7 @@ import {ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit,OnDestroy, OnChanges, AfterContentChecked{
-  selectedTab:String = 'job'
+  selectedTab:String
   hideBars:Boolean=true;
   showSignInBar:Boolean;
   username:any;
@@ -59,8 +59,7 @@ export class DashboardComponent implements OnInit,OnDestroy, OnChanges, AfterCon
             
         },
         err=>{
-            localStorage.removeItem('Token')
-            localStorage.removeItem('username')
+            localStorage.clear()
             this.showSignInBar=true
             
             
@@ -68,8 +67,8 @@ export class DashboardComponent implements OnInit,OnDestroy, OnChanges, AfterCon
     )
 
     }else{
-      localStorage.removeItem('Token')
-      localStorage.removeItem('username')
+      localStorage.clear()
+ 
            
 
     }
@@ -100,6 +99,9 @@ export class DashboardComponent implements OnInit,OnDestroy, OnChanges, AfterCon
         }
         else if(res==='showProfile'){
           this.selectedTab = 'profile'
+        }else if(res==='showProfileMain'){
+          this.selectedTab = 'profile'
+
         }
         
       }

@@ -1,0 +1,35 @@
+.editPersonalDetailsbutton{
+    width:191px;
+    height:44px;
+    border: 2px solid white;
+    border-radius:8px
+}
+.pPersonal{
+    color:white;
+    font-size: 15px;
+}
+.firstProfileDiv{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.div1{
+    display:flex;
+    flex-direction: column;
+    padding:40px;
+    background-color: #f6f8fa;
+}
+
+.div2{
+
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    background-color:white;
+    margin-bottom: 3%;
+}
+.div2Button{
+    border:2px solid #3f51b5;
+    border-radius:6px
+
+}
