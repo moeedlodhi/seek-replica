@@ -11,6 +11,7 @@
 .firstProfileDiv{
     padding-top: 40px;
     padding-bottom: 40px;
+    height:260px
 }
 
 .div1{
@@ -32,4 +33,38 @@
     border:2px solid #3f51b5;
     border-radius:6px
 
+}
+
+.personalForm{
+    width:70%;
+    margin-left:0px;
+    background-color: rgb(255, 255, 255);
+    border-left: 6px solid #1e549b;
+    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  margin-bottom:2%;
+  
+}
+.noPadding{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.noRightPadding{
+    padding-right:0px
+}
+.noLeftPadding{
+    padding-left:0px
+}
+input{
+    width:100%;
+    padding:10px
+}
+
+.hideElement{
+    display:none
+}
+
+noWrap{
+    display:flex;
+    flex-wrap: nowrap;
 }

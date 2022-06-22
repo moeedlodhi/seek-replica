@@ -11,6 +11,10 @@ input{
     border: 1px solid grey;
     
 }
+.maxWidth{
+  max-width: 768px;
+  margin-top:10%
+}
 
 input.ng-touched.ng-invalid{
     border:1px solid red;

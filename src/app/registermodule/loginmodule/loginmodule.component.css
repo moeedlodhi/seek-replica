@@ -78,3 +78,12 @@ input:focus{
     padding:30px
 }
 
+.maxWidth{
+
+  max-width: 768px;
+  margin-top: 10%;
+
+}
+
+
+
