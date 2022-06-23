@@ -105,6 +105,8 @@ export class AuthServiceModule{
                       candidateField{
                         country
                         city
+                        firstName
+                        lastName
                         user{
                           email
                           username

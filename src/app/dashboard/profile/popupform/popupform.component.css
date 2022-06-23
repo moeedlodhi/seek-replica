@@ -1,0 +1,31 @@
+.containerPhone{
+    width:100%;
+    padding-left:0px;
+    padding-right:0px;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+ 
+}
+
+input.ng-touched.ng-invalid{
+    border:1px solid red;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+.form-control:focus{
+
+    border-color: 1px solid #ced4da;
+    box-shadow: 0 0 0 0;
+
+}
+.containerPhone:focus{
+    border-color: 1px solid #ced4da;
+    box-shadow: 0 0 0 0;
+}
+
+
+
+
+
+

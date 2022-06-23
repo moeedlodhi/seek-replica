@@ -4,7 +4,7 @@
     </button>
 
     <button mat-button class ="btn1">
-        <p class="pLeft" style="font-size:18px" >Profile</p>
+        <p class="pLeft" style="font-size:18px" [routerLink]="['/dashboard/profile']"  >Profile</p>
     </button>
 
     <button mat-button class ="btn1">
@@ -21,7 +21,7 @@
 
 <mat-menu #menu="matMenu" xPosition="before" >
     <div style="width:200px">
-        <button mat-menu-item>Profile</button>
+        <button [routerLink]="['/dashboard/profile']" mat-menu-item>Profile</button>
     </div>
     
     <div style="width:200px">

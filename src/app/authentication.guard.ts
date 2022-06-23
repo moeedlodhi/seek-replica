@@ -54,16 +54,20 @@ export class StartedGuard implements CanActivate{
                     const resUser = res.data.verifyUserStatus.candidateField.user
                     const resCandidate = res.data.verifyUserStatus.candidateField
 
-
+                  
                     const username = resUser.username
                     const email = resUser.email
                     const country = resCandidate.country
                     const city = resCandidate.city
+                    const firstName = resCandidate.firstName
+                    const lastName = resCandidate.lastName
 
                     localStorage.setItem('username',username)
                     localStorage.setItem('email',email)
                     localStorage.setItem('country',country)
                     localStorage.setItem('city',city)
+                    localStorage.setItem('firstName',firstName)
+                    localStorage.setItem('lastName',lastName)
 
 
 

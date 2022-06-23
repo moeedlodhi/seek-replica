@@ -1,70 +1,33 @@
-.editPersonalDetailsbutton{
-    width:191px;
-    height:44px;
-    border: 2px solid white;
-    border-radius:8px
-}
-.pPersonal{
-    color:white;
-    font-size: 15px;
-}
-.firstProfileDiv{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    height:260px
-}
-
-.div1{
-    display:flex;
-    flex-direction: column;
-    padding:40px;
-    background-color: #f6f8fa;
-}
-
-.div2{
-
-    display:flex;
-    flex-direction: column;
-    padding:20px;
-    background-color:white;
-    margin-bottom: 3%;
-}
-.div2Button{
-    border:2px solid #3f51b5;
-    border-radius:6px
-
-}
-
-.personalForm{
-    width:70%;
-    margin-left:0px;
-    background-color: rgb(255, 255, 255);
-    border-left: 6px solid #1e549b;
-    -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  margin-bottom:2%;
-  
-}
-.noPadding{
-    padding-left: 0px;
-    padding-right: 0px;
-}
-.noRightPadding{
-    padding-right:0px
-}
-.noLeftPadding{
-    padding-left:0px
-}
-input{
+.profileDiv{
     width:100%;
-    padding:10px
+    background-color: #3f51b5;
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-left:16%
+}
+h1{
+     
+    margin:0px 0px 0px;
+    margin-bottom: 1%;
+    color:white
+}
+.buttonEditProfile{
+    border:1px solid white;
+    background-color:transparent;
+    border-radius:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    
+}
+.h3small{
+    color: white;
+    margin: 0px 0px 0px;
+    font-size: 14px;
+    margin-top: 2%;
 }
 
-.hideElement{
-    display:none
+p{
+    margin:0px 0px 0px;
+    color:white
 }
 
-noWrap{
-    display:flex;
-    flex-wrap: nowrap;
-}

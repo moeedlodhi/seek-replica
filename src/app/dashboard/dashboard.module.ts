@@ -19,9 +19,11 @@ import { GettingstartedComponent } from './profile/gettingstarted/gettingstarted
 import { ReactiveFormsModule } from "@angular/forms";
 import { MinimenuDirective } from './directives/minimenu.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button'
-
+import {MatButtonModule} from '@angular/material/button';
+import { PopupformComponent } from './profile/popupform/popupform.component'
+import { MatDialogModule } from "@angular/material/dialog";
 @NgModule({
+    entryComponents:[PopupformComponent],
     declarations:[
         DashboardComponent,
         JobsearchComponent,
@@ -38,7 +40,8 @@ import {MatButtonModule} from '@angular/material/button'
         HidesideDirectiveSecond,
         DropdownDirective,
         GettingstartedComponent,
-        MinimenuDirective
+        MinimenuDirective,
+        PopupformComponent
     ],
     imports:[
         CommonModule,
@@ -49,7 +52,8 @@ import {MatButtonModule} from '@angular/material/button'
         MatListModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
-        MatButtonModule
+        MatButtonModule,
+        MatDialogModule
   
     ]
     ,exports:[
