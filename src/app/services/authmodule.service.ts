@@ -116,4 +116,28 @@ export class AuthServiceModule{
                   }`
             })
         }
+
+
+        updatePersonalDetails(firstname:string,lastname:string,livesin:string,code:string,phonenumber:string){
+            return this.apollo.mutate({
+
+                mutation:gql`mutation{
+                    updateProfile(phoneNumber:"${phonenumber}",countryCode:"${code}",firstName:"${firstname}",lastName:"${lastname}",livesIn:"${livesin}"){
+                      ok
+                      error
+                      candidate{
+                        country
+                        countryCode
+                        firstName
+                        lastName
+                        phoneNumber
+                        city
+                        companyName
+                        currentWorking
+                      }
+                    }
+                  }`
+
+            })
+        }
 }  

@@ -1,3 +1,4 @@
+from pickle import NONE
 import graphene
 from graphene_django import DjangoObjectType
 from django.contrib.auth.models import User
@@ -110,7 +111,48 @@ class UserGettingStarted(graphene.Mutation):
         return True        
 
 
+class UpdateProfile(graphene.Mutation):
+    class Arguments():
+        first_name = graphene.String(required=False)
+        last_name = graphene.String(required=False)
+        lives_in = graphene.String(required = False)
+        country_code = graphene.String(required = False)
+        phone_number = graphene.String(required=False)
 
+    ok = graphene.String()
+    error = graphene.String()
+    candidate = graphene.Field(CandidateObjectType)
+
+    @login_required
+    def mutate(self, info, first_name=None, last_name=None, lives_in=None, country_code=None, phone_number=None):
+        candidate_to_get = candidate.objects.filter(user=info.context.user).first()
+        if first_name == 'null':
+            pass 
+        else:
+            candidate_to_get.first_name = first_name
+        if last_name == 'null':
+            pass
+        else:
+            print('*********',last_name)
+            candidate_to_get.last_name = last_name
+
+        if lives_in == 'null':
+            pass
+        else:
+            print('*****')
+            candidate_to_get.city  = lives_in
+
+        if country_code == 'null':
+            pass
+        else:
+            candidate_to_get.country_code = country_code   
+
+        if phone_number == 'null':
+            pass
+        else:
+            candidate_to_get.phone_number = phone_number
+        candidate_to_get.save()
+        return UpdateProfile(ok='True', error='None',candidate = candidate_to_get)       
 
 class VerifyUserStatus(graphene.Mutation):
 
@@ -141,3 +183,4 @@ class AuthMutations(graphene.ObjectType):
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
     verify_token = graphql_jwt.Verify.Field()
     user_getting_started = UserGettingStarted.Field()
+    update_profile = UpdateProfile.Field()

@@ -17,6 +17,8 @@ class candidate(models.Model):
     classification = models.CharField(max_length=264,null=True,blank=True)
     first_registration = models.BooleanField(default = True)
     current_working = models.BooleanField(default = False) 
+    country_code = models.CharField(max_length=264,null=True,blank=True)
+    phone_number = models.CharField(max_length=264,null=True,blank=True)
 
     def __str__(self):
         return self.user.username

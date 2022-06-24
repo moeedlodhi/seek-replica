@@ -4,6 +4,7 @@
     padding-right:0px;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    flex-wrap: nowrap;
  
 }
 

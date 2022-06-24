@@ -63,7 +63,7 @@ MIDDLEWARE = [
 ]
 GRAPHQL_JWT = {
     "JWT_VERIFY_EXPIRATION": True,
-    "JWT_EXPIRATION_DELTA": timedelta(minutes=10),
+    "JWT_EXPIRATION_DELTA": timedelta(minutes=100),
     "JWT_REFRESH_EXPIRATION_DELTA": timedelta(days=7),
 }
 GRAPHENE = {
@@ -108,22 +108,22 @@ WSGI_APPLICATION = 'seek_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-DATABASES = {  
-	'default': {     
-		'ENGINE': 'django.db.backends.postgresql_psycopg2',       
-		'NAME': 'djangodb',       
-		'USER': 'djangouser',        
-		'PASSWORD': 'password',        
-		'HOST': 'localhost',       
-		'PORT': '',    
-	}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
+# DATABASES = {  
+# 	'default': {     
+# 		'ENGINE': 'django.db.backends.postgresql_psycopg2',       
+# 		'NAME': 'djangodb',       
+# 		'USER': 'djangouser',        
+# 		'PASSWORD': 'password',        
+# 		'HOST': 'localhost',       
+# 		'PORT': '',    
+# 	}
+# }
 
 
 # Password validation

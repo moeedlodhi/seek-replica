@@ -44,7 +44,7 @@ export class ProfileComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(PopupformComponent, {
       width: '600px',
-      height:'100%',
+      height:'70%',
       data: {name: ''}
     });
 
