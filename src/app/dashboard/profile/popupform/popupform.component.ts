@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import { AuthServiceModule } from 'src/app/services/authmodule.service';
 })
 export class PopupformComponent implements OnInit {
   personalForm:any
+  @ViewChild('numberCode') numberCode:ElementRef
   ngOnInit(): void {
 
     this.personalForm = new FormGroup({
@@ -45,9 +46,21 @@ export class PopupformComponent implements OnInit {
     this.authservice.updatePersonalDetails(firstname,lastname,livesin,code,phone).subscribe(
       res=>{
         console.log(res,'res hahahah')
+        this.dialogRef.close();
+        
       }
     )
     
+
+
+  }
+  numberTyping(event){
+
+    console.log(event.target.value,'event value')
+    this.numberCode.nativeElement.value = event.target.value
+
+
+
 
 
   }

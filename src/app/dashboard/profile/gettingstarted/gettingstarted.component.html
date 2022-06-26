@@ -13,13 +13,13 @@
                 <div class="row rowPadding" style="display:flex;justify-content:space-between">
                     <div style="display:flex;flex-direction: column;">
                         <label><strong>First Name</strong></label>
-                        <input placeholder="first name..." class="input1" formControlName="firstname">
+                        <input id="firstname" placeholder="first name..." class="input1" formControlName="firstname">
 
                     </div>
 
                     <div style="display:flex;flex-direction: column;">
                         <label><strong>Last Name</strong></label>
-                        <input placeholder="last name..." class="input1" formControlName="lastname">
+                        <input id="lastname" placeholder="last name..." class="input1" formControlName="lastname">
 
                     </div>
                     
@@ -36,9 +36,10 @@
                 </div>
 
 
-                <div class="row rowPadding">
+                <div class="rowPadding">
 
                     <label><strong>Upload Resume</strong></label>
+                    <br>
                     <input (change) = "onFileSelected($event)" type="file" placeholder="" class="inputFile">
 
                     <!-- <button (click)="onUpload()"> uplaod file</button> -->

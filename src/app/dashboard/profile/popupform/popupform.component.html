@@ -22,15 +22,15 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleInputEmail1">First Name</label>
-                <input formControlName="firstname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter first name">
+                <label for="exampleInputEmail1"><strong>First Name</strong></label>
+                <input formControlName="firstname" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
             </div>
 
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleInputEmail1">Last Name</label>
-                <input formControlName="lastname" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter last name">
+                <label for="exampleInputEmail1"><strong>Last Name</strong></label>
+                <input formControlName="lastname" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
             </div>
         </div>
 
@@ -38,8 +38,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <label for="exampleInputEmail1">Lives in</label>
-                <input formControlName="livesin" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Location">
+                <label for="exampleInputEmail1"><strong>Lives in</strong></label>
+                <input formControlName="livesin" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
              
             </div>
         </div>
@@ -49,24 +49,24 @@
     <div class="row">
         <div class="col-md-4">
             <div class="form-group">
-                <label for="exampleInputEmail1">Country Code</label>
-                <input formControlName="code" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Country code">
+                <label for="exampleInputEmail1"><strong>Country Code</strong></label>
+                <input (input)="numberTyping($event)" formControlName="code" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
             </div>
         </div>
 
 
         <div class="col-md-8">
             <div class="form-group">
-                <label for="exampleInputEmail1">Number</label>
-                <div class="container row containerPhone" [ngStyle]="{'border':this.personalForm.get('phone').status==='INVALID'  &&   this.personalForm.get('phone').touched != false? '1px solid red':'1px solid #ced4da'}">
-                    <!-- <div style="width:20%;border-right:1px solid grey" >
+                <label for="exampleInputEmail1"><strong>Number</strong></label>
+                <div class="container row containerPhone" [ngStyle]="{'border':this.personalForm.get('phone').status==='INVALID'  &&   this.personalForm.get('phone').touched != false? '1px solid red':'1px solid grey'}">
+                    <!-- <div style="width:20%;border-right:1px solid grey" > 
                     </div> -->
                     <div style="width:100%;padding:0.5px;flex-wrap:nowrap" class="row">
-                        <input readonly="True" formControlName="phone" style="background-color:white;border:0px;width:10%;border-radius:0px" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input #numberCode readonly="True" formControlName="phone" style="font-size:15px;padding:0px;margin-left:3%;background-color:white;border:0px;width:33px;border-radius:0px" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         <div style="width:2%;padding-top:10px;" class="row">
                             <div style="width:100%;height:20px;border-right: 1px solid black"></div>
                         </div>
-                        <input formControlName="phone" style="border:0px;width:88%" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Phone number">
+                        <input formControlName="phone" style="border:0px;width:88%" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                 </div>
                 

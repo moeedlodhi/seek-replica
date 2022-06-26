@@ -86,3 +86,36 @@
 input.ng-touched.ng-invalid{
     border:1px solid red
 }
+
+
+@media only screen and (max-width:1024px){
+
+
+    #firstname{
+        width:200px
+    }
+
+    #lastname{
+        width:200px
+    }
+
+    
+
+}
+
+
+
+@media only screen and (max-width:768px){
+
+
+    #firstname{
+        width:120px
+    }
+
+    #lastname{
+        width:120px
+    }
+
+    
+
+}

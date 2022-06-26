@@ -2,10 +2,16 @@
     width:100%;
     padding-left:0px;
     padding-right:0px;
-    border: 1px solid #ced4da;
+    border: 1px solid grey;
     border-radius: 0.25rem;
     flex-wrap: nowrap;
  
+}
+input{
+    border:1px solid grey;
+}
+.scrollDiv{
+   
 }
 
 input.ng-touched.ng-invalid{
@@ -21,7 +27,7 @@ textarea:focus, input:focus{
 
 }
 .containerPhone:focus{
-    border-color: 1px solid #ced4da;
+    border-color: 1px solid grey;
     box-shadow: 0 0 0 0;
 }
 
