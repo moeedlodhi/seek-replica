@@ -43,7 +43,7 @@ export class AuthServiceModule{
     }
 
     uploadResume(data): Observable<any> {
-      const url = `http://127.0.0.1:8000/uploadresume/`;
+      const url = `https://api.portfolio-moeed.com/uploadresume/`;
       return this.httpservice.post<any>(url,
   
         data);
