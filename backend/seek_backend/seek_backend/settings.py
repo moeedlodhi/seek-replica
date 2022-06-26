@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'graphene_django'
+    'graphene_django',
+    'rest_framework'
 ]
 LOCAL_APPS = [
     'jobsearchbars','jobs','auth_module'

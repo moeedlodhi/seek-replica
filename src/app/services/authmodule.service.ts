@@ -2,6 +2,9 @@ import { Apollo,gql } from "apollo-angular";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs/operators";
 import { ClassificationInfo } from "typescript";
+import { HttpClientModule, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 
 @Injectable({
@@ -9,7 +12,9 @@ import { ClassificationInfo } from "typescript";
   })
 export class AuthServiceModule{
 
-    constructor(private apollo:Apollo){}
+    constructor(private apollo:Apollo, private httpservice:HttpClient){}
+
+
 
     loginUser(email1:any,password1:any){
         return this.apollo.mutate({
@@ -35,6 +40,13 @@ export class AuthServiceModule{
                 token:token
             }
         })
+    }
+
+    uploadResume(data): Observable<any> {
+      const url = `http://127.0.0.1:8000/uploadresume/`;
+      return this.httpservice.post<any>(url,
+  
+        data);
     }
 
     registerUser(username:string,password:string,email:string){
@@ -65,12 +77,12 @@ export class AuthServiceModule{
 
     gettingStarted(firstName:string,lastName:string,jobTitle:string,companyName:string,
                    startedMonth:string,startedYear:string,currentWorking:boolean,endMonth:string,endYear:string,
-                   country:string,city:string,classification:string){
+                   country:string,city:string,classification:string,resume:any){
             return this.apollo.mutate({
                 mutation:gql`mutation gettingStarted($firstName:String!,$lastName:String!,$jobTitle:String!,$companyName:String!,
                     $startedMonth:String!,$startedYear:String!,$currentWorking:Boolean!,$endMonth:String!,$endYear:String!,
-                    $country:String!,$city:String!,$classification:String!){
-                        userGettingStarted(firstName:$firstName,lastName:$lastName,
+                    $country:String!,$city:String!,$classification:String!,$resume:Upload!){
+                        userGettingStarted(resume:$resume,firstName:$firstName,lastName:$lastName,
                             jobTitle:$jobTitle,companyName:$companyName,startedMonth:$startedMonth,startedYear:$startedYear,
                             currentWorking:$currentWorking,endMonth:$endMonth,endYear:$endYear,country:$country,
                             city:$city,classification:$classification){
@@ -80,6 +92,7 @@ export class AuthServiceModule{
                     }`,variables:{
 
                         firstName:firstName,
+                        resume:resume,
                         lastName:lastName,
                         jobTitle:jobTitle,
                         companyName:companyName,

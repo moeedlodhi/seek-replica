@@ -1,6 +1,7 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import User
-
+from seek_backend.settings import STATIC_ROOT
 # Create your models here.
 
 
@@ -19,6 +20,7 @@ class candidate(models.Model):
     current_working = models.BooleanField(default = False) 
     country_code = models.CharField(max_length=264,null=True,blank=True)
     phone_number = models.CharField(max_length=264,null=True,blank=True)
+    resume = models.FileField(upload_to='seek_backend/static/candidateFiles', null=True, blank=True)
 
     def __str__(self):
         return self.user.username

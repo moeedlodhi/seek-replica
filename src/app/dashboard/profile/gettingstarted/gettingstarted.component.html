@@ -18,7 +18,7 @@
                     </div>
 
                     <div style="display:flex;flex-direction: column;">
-                        <label>Last Name</label>
+                        <label><strong>Last Name</strong></label>
                         <input placeholder="last name..." class="input1" formControlName="lastname">
 
                     </div>
@@ -34,6 +34,25 @@
 
 
                 </div>
+
+
+                <div class="row rowPadding">
+
+                    
+                    <input (change) = "onFileSelected($event)" type="file" placeholder="file upload" class="inputFile">
+
+                    <!-- <button (click)="onUpload()"> uplaod file</button> -->
+
+                </div>
+
+
+
+
+
+
+
+
+
                 <div class="row rowPadding">
 
                     <label>Company Name</label>
@@ -47,7 +66,7 @@
                         <label>Started Month</label>
                         <!-- <div class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
 
-                        <input #startMonth placeholder="start month..." id="input1" readonly="True" class="input3 droparrow" formControlName="startedmonth" style="width:80%">
+                        <input #startMonth placeholder="start month..." id="input1" readonly="True" class="input3 droparrow" formControlName="startedmonth" style="width:100%">
                             <!-- <div id="startmonth" style="width:20%" class="droparrow"> -->
                             <!-- </div> -->
 
@@ -74,7 +93,7 @@
                         <label>Started Year</label>
                         <!-- <div  class="row" style="display:flex;flex-wrap: nowrap;"> -->
 
-                            <input #startYear placeholder="start year..." id="input2"  readonly="True" class="input3 droparrow" formControlName="startedyear" style="width:80%">
+                            <input #startYear placeholder="start year..." id="input2"  readonly="True" class="input3 droparrow" formControlName="startedyear" style="width:100%">
                             <!-- <div id="startyear" style="width:20%" class="droparrow">
                             </div> -->
 
@@ -102,7 +121,7 @@
                         <label>End Month</label>
                         <!-- <div  class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
 
-                        <input #endMonth placeholder="end month..." id="input3"  readonly="True" class="input3 droparrow" formControlName="endmonth" style="width:80%">
+                        <input #endMonth placeholder="end month..." id="input3"  readonly="True" class="input3 droparrow" formControlName="endmonth" style="width:100%">
                             <!-- <div id="endmonth" style="width:20%" class="droparrow">
                             </div> -->
 
@@ -127,7 +146,7 @@
                         <label>End Year</label>
                         <!-- <div  class="input3 row" style="display:flex;flex-wrap: nowrap;"> -->
 
-                        <input #endYear placeholder="end year..." id="input4"  readonly="True" class="input3 droparrow" formControlName="endyear" style="width:80%">
+                        <input #endYear placeholder="end year..." id="input4"  readonly="True" class="input3 droparrow" formControlName="endyear" style="width:100%">
                             <!-- <div id="endyear" style="width:20%" class="droparrow">
                             </div> -->
 
@@ -145,7 +164,7 @@
 
                     </div>
 
-                    <div class="form-check" style="display:flex;height:72px;flex-direction:column;justify-content:center">
+                    <div class="form-check" style="display:flex;height:72px;flex-direction:column;justify-content:center;margin-left:5%">
                         <input (click)="currentlyWorking()" formControlName="checkbox" style="margin-top:20px;height:18px;width:18px;margin-left:-1.5rem" class="form-check-input" type="checkbox"  id="flexCheckDefault">
                         <label style="margin-top:20px"  class="form-check-label" for="flexCheckDefault">
                           Working here
@@ -216,7 +235,7 @@
                 <div style="width:100%;height:100px">
                 </div>
             
-                <button type="submit"  id="seekButton2" style="width:50%;background-color:#e60078;border:0px"   class="button btn btn-primary">Save and Proceed</button>
+                <button  type="submit"  id="seekButton2" style="width:50%;background-color:#e60078;border:0px"   class="button btn btn-primary">Save and Proceed</button>
 
             </form>
         

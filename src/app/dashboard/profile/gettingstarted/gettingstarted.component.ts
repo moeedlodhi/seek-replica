@@ -3,9 +3,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {style, state, animate, transition, trigger} from '@angular/animations';
 import { DataService, mainService } from 'src/app/services/subject.service';
 import { AuthServiceModule } from 'src/app/services/authmodule.service';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AbstractControl } from '@angular/forms';
+
+
 
 
 
@@ -44,7 +46,8 @@ import { AbstractControl } from '@angular/forms';
 })
 export class GettingstartedComponent implements OnInit {
 
-  profileForm:any
+  profileForm:any;
+  selectedResume:File;
   @ViewChild('country') country:ElementRef
   @ViewChild('city') city:ElementRef
   @ViewChild('classification') class:ElementRef
@@ -150,7 +153,29 @@ export class GettingstartedComponent implements OnInit {
 
     }
 
+    
 
+
+
+  }
+  onFileSelected(event){
+  
+    console.log(event.target.files,'file event',event.target.files[0])
+    this.selectedResume = <File>event.target.files[0]
+     
+      
+  }
+  onUpload(){
+    const fd =  new FormData()
+    fd.append('image',this.selectedResume,this.selectedResume.name)
+    const data={"image":fd ,"username":"moeed"}
+    this.authService.uploadResume(data).subscribe(
+      res=>{
+        console.log(res,'resume sent')
+        
+      }
+    ) 
+    
 
   }
 
@@ -214,8 +239,14 @@ export class GettingstartedComponent implements OnInit {
     if(this.profileForm.status ==='INVALID'){
 
       return
-    }else{
-  
+    }else{ 
+      const username = localStorage.getItem('username')
+      
+      const fd =  new FormData()
+      fd.append('image',this.selectedResume)
+      fd.append('username',username)
+
+
       const firstName = this.profileForm.get('firstname').value
       const lastname = this.profileForm.get('lastname').value
       const jobtitle = this.profileForm.get('jobtitle').value
@@ -228,16 +259,28 @@ export class GettingstartedComponent implements OnInit {
       const country = this.profileForm.get('livesin').value
       const city = this.profileForm.get('livesincity').value
       const classi = this.profileForm.get('preferredclassification').value
+      const resume = this.selectedResume
       this.authService.gettingStarted(firstName,lastname,jobtitle,companyname,startedmonth,startedyear,
-                                        currentworking,endmonth,endyear,country,city,classi).subscribe(
-                                          res=>{
+                                        currentworking,endmonth,endyear,country,city,classi,this.selectedResume).pipe(map(
 
-                                            this.router.navigate(['dashboard','jobsearch','jobs']
-                                            )
+                                          res=>{
                                             
                                           }
+
+                                        ),mergeMap(res=>this.authService.uploadResume(fd))).subscribe(
+                                          res=>{
+                                            console.log(res,'resume uploaded')
+                                            this.router.navigate(['dashboard','jobsearch','jobs'])
+                                          }
                                         )
-    }
+                                          
+                                        
+      
+    
+                          
+                               
+                                        
+                                        }
   
   }
 

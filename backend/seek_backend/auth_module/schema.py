@@ -8,6 +8,7 @@ from.models import candidate
 import time
 from graphql_jwt.decorators import login_required
 from .mapping import month_mapper
+from graphene_file_upload.scalars import Upload
 
 class UserObjectType(DjangoObjectType):
     class Meta:
@@ -68,13 +69,14 @@ class UserGettingStarted(graphene.Mutation):
         country = graphene.String()
         city = graphene.String()
         classification = graphene.String()
+        resume = Upload(required = False)
     
     ok = graphene.String()
     error = graphene.String()
 
     @login_required
     def mutate(self,info,**kwargs):
-        print(info.context.user)
+        print(info.context.user,'*********',kwargs['resume'])
         candidate_to_create,created = candidate.objects.get_or_create(user=info.context.user)
 
         started_month_mapped = month_mapper[kwargs['started_month']]
